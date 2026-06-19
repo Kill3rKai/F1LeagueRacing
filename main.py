@@ -347,7 +347,7 @@ def update_race_points(ws, driver_rows, points_by_name, race_col):
 
     if updates:
         ws.batch_update(updates)
-        print(f"  ✓ Written {len(updates)} driver results to column {race_col}")
+        print(f"   Written {len(updates)} driver results to column {race_col}")
 
 
 def update_totals(ws, driver_rows):
@@ -381,7 +381,7 @@ def update_totals(ws, driver_rows):
 
     if updates:
         ws.batch_update(updates)
-        print(f"  ✓ Totals updated for {len(updates)} drivers")
+        print(f"   Totals updated for {len(updates)} drivers")
 
 
 def calc_wcc_points(ws, driver_rows):
@@ -506,7 +506,7 @@ def update_wcc_table(ws, team_points):
 
     if requests:
         ws.spreadsheet.batch_update({"requests": requests})
-        print(f"  ✓ WCC table updated and re-sorted")
+        print(f"   WCC table updated and re-sorted")
 
 
 # ----------------------------
@@ -537,7 +537,7 @@ def main():
     # 3. Parse CSV
     print("\n[1/4] Parsing CSV...")
     race_df, incidents_df = parse_csv(csv_path)
-    print(f"  ✓ {len(race_df)} drivers found")
+    print(f"   {len(race_df)} drivers found")
 
     # 4. Resolve shared-team players (prompt if needed)
     print("\n[2/4] Resolving player identities...")
@@ -595,7 +595,7 @@ def main():
     print("\n[3/4] Connecting to Google Sheets...")
     ws = connect_sheets()
     driver_rows = get_driver_rows(ws)
-    print(f"  ✓ Connected. {len(driver_rows)} drivers found in sheet.")
+    print(f"   Connected. {len(driver_rows)} drivers found in sheet.")
 
     # 6. Write race points + update totals
     print(f"\n[4/4] Writing results...")
