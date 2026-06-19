@@ -57,3 +57,4 @@ You'll be prompted for the CSV path and race number (e.g. `1`, `2`, `2S`).
 
 
 ### i've attached a image of our VSM google sheet setup
+![Sheet Example](sheetExample.png)
