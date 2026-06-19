@@ -39,7 +39,7 @@ PLAYER_MAP = {
 
 # Named player aliases in CSV (not listed as "Player")
 NAMED_PLAYERS = {
-    "Kill3rKai": "Kai",   # Kai in CSV = Kai in sheet
+    "Kill3rKai": "Kai",   # Kill3rKai in CSV = Kai in sheet
 }
 
 # AI driver name -> sheet row name (direct 1:1 mapping, case-insensitive last name match)
