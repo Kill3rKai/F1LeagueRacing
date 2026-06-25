@@ -19,7 +19,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 
 # ----------------------------
-# CONFIG — edit these as your league changes
+# CONFIG — edit these to match league conf
 # ----------------------------
 
 SERVICE_ACCOUNT_FILE = "service_account.json"   # JSON key from host
@@ -33,6 +33,7 @@ PLAYER_MAP = {
     "Scuderia Ferrari HP": ["Kai", "Deshy"],
     "McLaren":             ["Tom"],
     "Oracle Red Bull Racing": ["Téo"],
+    "Mercedes-AMG F1 Team":["Rehan"],
     # Add 5th player here when confirmed:
     # "Team": ["PlayerName"],
 }
@@ -44,8 +45,9 @@ NAMED_PLAYERS = {
 
 # AI driver name -> sheet row name (direct 1:1 mapping, case-insensitive last name match)
 # The script auto-matches by last name, but you can add overrides here if needed
+# "SOME NAME": "SheetRowName",
 AI_OVERRIDES = {
-    # "SOME NAME": "SheetRowName",
+# "SOME NAME": "SheetRowName",
 }
 
 # Points tables
@@ -95,8 +97,16 @@ RACE_COLUMNS = {
 # WCC table layout (same sheet tab)
 # Team name cells are in cols U–X, starting at row 27
 WCC_START_ROW     = 27   # Row of "1st" in WCC table
-WCC_TEAM_COL      = "V"  # Column where team name text lives (the colored cell)
+WCC_TEAM_COL      = "U"  # Column where team name text lives (the colored cell)
 WCC_TEAM_COL_END  = "X"  # Merged to here
+
+# WDC table layout (same sheet tab)
+WDC_START_ROW    = 27   # Row of "1st" in WDC table
+WDC_NAME_COL     = "K"  # Driver name column
+WDC_NAME_COL_END = "M"  # Name merged to here
+WDC_PTS_COL      = "N"  # Points column
+WDC_PTS_COL_END  = "O"  # Points merged to here
+
 
 # Teams: CSV team name -> sheet display name + background color (hex)
 TEAMS = {
@@ -120,14 +130,20 @@ TEAMS = {
 def parse_csv(filepath):
     """Parse the F1 26 export CSV. Returns (race_df, incidents_df)."""
     with open(filepath, "rb") as f:
-        raw = f.read().decode("latin-1")
+        raw = f.read().decode("utf-8-sig")
 
+    # normalize line endings (handle \r\n \n)
+    raw = raw.replace("\r\n", "\n").replace("\r", "\n")
     lines = raw.strip().split("\r\n")
+
+    # Debug
+    print(f"[Debug] First line: {lines[0][:80]}")
 
     # Find the blank line separating race results from incident log
     separator = None
     for i, line in enumerate(lines):
-        if line.strip() == "" or line.strip() == "\t" * 8:
+        stripped = line.strip().strip(",").strip("\t")
+        if stripped == "" and i > 1:
             separator = i
             break
 
@@ -136,10 +152,13 @@ def parse_csv(filepath):
 
     race_df = pd.read_csv(
         __import__("io").StringIO("\n".join(race_lines)),
-        sep="\t",
+        sep=None,
+        engine="python",
         encoding="latin-1"
     )
-    race_df.columns = [c.strip() for c in race_df.columns]
+    race_df.columns = [c.strip().strip('"') for c in race_df.columns]
+
+    print(f"[Debug] Cols Found {list(race_df.columns)}")
 
     # Clean up Pos column — DSQ/DNF rows still have a numeric Pos
     race_df["Pos."] = pd.to_numeric(race_df["Pos."], errors="coerce")
@@ -153,10 +172,11 @@ def parse_csv(filepath):
                 break
         incidents_df = pd.read_csv(
             __import__("io").StringIO("\n".join(incident_lines)),
-            sep="\t",
+            sep=None,
+            engine="python",
             encoding="latin-1"
         )
-        incidents_df.columns = [c.strip() for c in incidents_df.columns]
+        incidents_df.columns = [c.strip().strip('"') for c in incidents_df.columns]
 
     return race_df, incidents_df
 
@@ -274,7 +294,7 @@ def get_all_sheet_names():
     ai_names = [
         "Russel", "Antonelli", "Verstappen", "Norris", "Sainz", "Albon",
         "Hulkenberg", "Borteleto", "Bearman", "Ocon", "Alonso", "Stroll",
-        "Perez", "Bottas", "Lawson", "Linblad", "Gasly", "Colapinto",
+        "Perez", "Bottas", "Lawson", "Lindblad", "Gasly", "Colapinto",
     ]
     names.extend(ai_names)
     return names
@@ -325,7 +345,7 @@ def get_driver_rows(ws):
     col_a = ws.col_values(1)  # 1-indexed
     mapping = {}
     for i, name in enumerate(col_a):
-        if name.strip():
+        if name.strip() and name.strip().lower() != "driver":
             mapping[name.strip().lower()] = i + 1  # 1-indexed row
     return mapping
 
@@ -348,41 +368,6 @@ def update_race_points(ws, driver_rows, points_by_name, race_col):
     if updates:
         ws.batch_update(updates)
         print(f"   Written {len(updates)} driver results to column {race_col}")
-
-
-def update_totals(ws, driver_rows):
-    """
-    Recalculate total points for every driver (sum of all race columns)
-    and write to the Total column (AF).
-    """
-    # Read all values at once
-    all_values = ws.get_all_values()
-
-    total_col_idx = col_letter_to_index(TOTAL_COL)  # 0-based
-    race_col_indices = [col_letter_to_index(c) for c in RACE_COLUMNS.values()]  # 0-based
-
-    updates = []
-    for name, row in driver_rows.items():
-        if row - 1 >= len(all_values):
-            continue
-        row_data = all_values[row - 1]  # 0-indexed
-
-        total = 0
-        for ci in race_col_indices:
-            if ci < len(row_data):
-                val = row_data[ci]
-                if val.strip().lstrip("-").isdigit():
-                    total += int(val)
-
-        updates.append({
-            "range": gspread.utils.rowcol_to_a1(row, total_col_idx + 1),
-            "values": [[total]],
-        })
-
-    if updates:
-        ws.batch_update(updates)
-        print(f"   Totals updated for {len(updates)} drivers")
-
 
 def calc_wcc_points(ws, driver_rows):
     """
@@ -412,7 +397,6 @@ def calc_wcc_points(ws, driver_rows):
     # AI drivers — map by last name
     ai_to_team = {
         "russel":     "Mercedes-AMG F1 Team",
-        "antonelli":  "Mercedes-AMG F1 Team",
         "norris":     "McLaren",
         "verstappen": "Oracle Red Bull Racing",
         "sainz":      "Atlassian Williams F1 Team",
@@ -426,7 +410,7 @@ def calc_wcc_points(ws, driver_rows):
         "perez":      "Cadillac Formula 1® Team",
         "bottas":     "Cadillac Formula 1® Team",
         "lawson":     "Visa Cash App Racing Bulls",
-        "linblad":    "Visa Cash App Racing Bulls",
+        "Lindblad":    "Visa Cash App Racing Bulls",
         "gasly":      "Alpine",
         "colapinto":  "Alpine",
     }
@@ -483,7 +467,7 @@ def update_wcc_table(ws, team_points):
 
         # Value update
         cell = gspread.utils.rowcol_to_a1(row, start_col)
-        ws.update(cell, [[team_name]])
+        ws.update(range_name=cell, values=[[team_name]])
 
         # Background color update via batchUpdate
         requests.append({
@@ -497,10 +481,13 @@ def update_wcc_table(ws, team_points):
                 },
                 "cell": {
                     "userEnteredFormat": {
-                        "backgroundColor": color
+                        "backgroundColor": color,
+                        "textFormat": {
+                            "foregroundColor": {"red": 1.0, "green": 1.0, "blue": 1.0}
+                        }
                     }
                 },
-                "fields": "userEnteredFormat.backgroundColor",
+                "fields": "userEnteredFormat.backgroundColor,userEnteredFormat.textFormat.foregroundColor",
             }
         })
 
@@ -508,6 +495,70 @@ def update_wcc_table(ws, team_points):
         ws.spreadsheet.batch_update({"requests": requests})
         print(f"   WCC table updated and re-sorted")
 
+def update_wdc_table(ws, driver_rows):
+    """
+    Re-sort the WDC table by total points descending.
+    Reads totals from AF (SUM formula), writes driver name + points to WDC table.
+    """
+    all_values = ws.get_all_values()
+    total_col_idx = col_letter_to_index(TOTAL_COL)  # AF, 0-based
+
+    # Build list of (points, display_name) for all drivers
+    driver_totals = []
+    for sheet_name, row in driver_rows.items():
+        if row - 1 >= len(all_values):
+            continue
+        row_data = all_values[row - 1]
+        if total_col_idx < len(row_data):
+            val = row_data[total_col_idx]
+            pts = int(val) if val.strip().lstrip("-").isdigit() else 0
+        else:
+            pts = 0
+        # Get display name from sheet (preserves original casing)
+        display_name = row_data[0] if row_data else sheet_name
+        driver_totals.append((pts, display_name))
+
+    # Sort by points descending
+    driver_totals.sort(reverse=True)
+
+    name_col  = col_letter_to_index(WDC_NAME_COL) + 1
+    name_end  = col_letter_to_index(WDC_NAME_COL_END) + 1
+    pts_col   = col_letter_to_index(WDC_PTS_COL) + 1
+    pts_end   = col_letter_to_index(WDC_PTS_COL_END) + 1
+
+    requests = []
+    for i, (pts, name) in enumerate(driver_totals):
+        row = WDC_START_ROW + i
+
+        ws.update(range_name=gspread.utils.rowcol_to_a1(row, name_col), values=[[name]])
+        ws.update(range_name=gspread.utils.rowcol_to_a1(row, pts_col), values=[[pts]])
+
+        # Force black text on both name and points cells
+        for col_start, col_end in [(name_col, name_end), (pts_col, pts_end)]:
+            requests.append({
+                "repeatCell": {
+                    "range": {
+                        "sheetId":          ws.id,
+                        "startRowIndex":    row - 1,
+                        "endRowIndex":      row,
+                        "startColumnIndex": col_start - 1,
+                        "endColumnIndex":   col_end,
+                    },
+                    "cell": {
+                        "userEnteredFormat": {
+                            "textFormat": {
+                                "foregroundColor": {"red": 0.0, "green": 0.0, "blue": 0.0}
+                            }
+                        }
+                    },
+                    "fields": "userEnteredFormat.textFormat.foregroundColor",
+                }
+            })
+
+    if requests:
+        ws.spreadsheet.batch_update({"requests": requests})
+
+    print(f"   WDC table updated and re-sorted")
 
 # ----------------------------
 # MAIN
@@ -600,17 +651,23 @@ def main():
     # 6. Write race points + update totals
     print(f"\n[4/4] Writing results...")
     update_race_points(ws, driver_rows, points_by_name, race_col)
-    update_totals(ws, driver_rows)
 
     # 7. Update WCC table
     print("\n[WCC] Calculating constructor standings...")
+    ws = connect_sheets()
+    driver_rows = get_driver_rows(ws)
     team_points = calc_wcc_points(ws, driver_rows)
     for team, pts in sorted(team_points.items(), key=lambda x: -x[1]):
         print(f"  {TEAMS[team]['name']:<20} {pts} pts")
     update_wcc_table(ws, team_points)
 
-    print("\nDone! Sheet updated successfully.")
+    # 8. Update WDC
+    print("\n[WDC] Calculating driver standings...")
+    update_wdc_table(ws, driver_rows)
 
+
+
+    print("\nDone! Sheet updated successfully.")
 
 if __name__ == "__main__":
     main()
