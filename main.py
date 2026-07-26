@@ -55,57 +55,64 @@ RACE_POINTS   = {1:25, 2:18, 3:15, 4:12, 5:10, 6:8, 7:6, 8:4, 9:2, 10:1}
 SPRINT_POINTS = {1:8,  2:7,  3:6,  4:5,  5:4,  6:3, 7:2, 8:1}
 
 # Sheet layout
-DRIVER_START_ROW = 2    # Row where driver list starts (Russel = row 2)
-DRIVER_COL       = "A"  # Column with driver names
-TOTAL_COL        = "AF" # Total points column
+DRIVER_START_ROW = 2    # Row where driver list starts (Antonelli = row 2)
+DRIVER_COL       = "B"  # Column with driver names
+TOTAL_COL        = "AG" # Total points column
 
 # Race columns: maps race label -> sheet column letter
 # Sprints are labelled e.g. "2S" -> column D (the "2 (S)" column)
 RACE_COLUMNS = {
-    "1":   "B",
-    "2":   "C",
+    "1":   "C",
+    "2":   "E",
     "2S":  "D",
-    "3":   "E",
-    "4":   "F",
-    "5":   "G",
-    "6":   "H",
-    "6S":  "I",
-    "7":   "J",
-    "7S":  "K",
-    "8":   "L",
-    "9":   "M",
-    "10":  "N",
-    "11":  "O",
-    "11S": "P",
-    "12":  "Q",
-    "13":  "R",
-    "14":  "S",
-    "14S": "T",
-    "15":  "U",
-    "16":  "V",
-    "17":  "W",
-    "18":  "X",
-    "18S": "Y",
-    "19":  "Z",
-    "20":  "AA",
-    "21":  "AB",
-    "22":  "AC",
-    "23":  "AD",
-    "24":  "AE",
+    "3":   "F",
+    "4":   "G",
+    "5":   "H",
+    "6S":   "I",
+    "6":  "J",
+    "7S":   "K",
+    "7":  "L",
+    "8":   "M",
+    "9":   "N",
+    "10":  "O",
+    "11S":  "P",
+    "11": "Q",
+    "12":  "R",
+    "13":  "S",
+    "14S":  "T",
+    "14": "U",
+    "15":  "V",
+    "16":  "W",
+    "17":  "X",
+    "18S":  "Y",
+    "18": "Z",
+    "19":  "AA",
+    "20":  "AB",
+    "21":  "AC",
+    "22":  "AD",
+    "23":  "AE",
+    "24":  "AF",
 }
 
 # WCC table layout (same sheet tab)
 # Team name cells are in cols U–X, starting at row 27
 WCC_START_ROW     = 27   # Row of "1st" in WCC table
-WCC_TEAM_COL      = "U"  # Column where team name text lives (the colored cell)
-WCC_TEAM_COL_END  = "X"  # Merged to here
+WCC_TEAM_COL      = "V"  # Column where team name text lives (the colored cell)
+WCC_TEAM_COL_END  = "Y"
+
+WCC_PTS_START_ROW = 27  
+WCC_PTS_COL      = "Z"   # Points column
+WCC_PTS_COL_END  = "AA"   # Merged to here
 
 # WDC table layout (same sheet tab)
 WDC_START_ROW    = 27   # Row of "1st" in WDC table
-WDC_NAME_COL     = "K"  # Driver name column
-WDC_NAME_COL_END = "M"  # Name merged to here
-WDC_PTS_COL      = "N"  # Points column
-WDC_PTS_COL_END  = "O"  # Points merged to here
+WDC_NAME_COL     = "L"  # Driver name column
+WDC_NAME_COL_END = "N"  # Name merged to here
+WDC_PTS_COL      = "O"  # Points column
+WDC_PTS_COL_END  = "P"  # Points merged to here
+
+
+
 
 
 # Teams: CSV team name -> sheet display name + background color (hex)
@@ -292,7 +299,7 @@ def get_all_sheet_names():
     names.extend(NAMED_PLAYERS.values())
     # AI driver sheet names (same as their last name in most cases)
     ai_names = [
-        "Russel", "Antonelli", "Verstappen", "Norris", "Sainz", "Albon",
+        "Antonelli", "Verstappen", "Norris", "Sainz", "Albon",
         "Hulkenberg", "Borteleto", "Bearman", "Ocon", "Alonso", "Stroll",
         "Perez", "Bottas", "Lawson", "Lindblad", "Gasly", "Colapinto",
     ]
@@ -340,11 +347,11 @@ def connect_sheets():
 def get_driver_rows(ws):
     """
     Returns dict: { sheet_name_lowercase -> row_number }
-    Reads column A from the sheet.
+    Reads column B from the sheet.
     """
-    col_a = ws.col_values(1)  # 1-indexed
+    col_b = ws.col_values(2)  # 1-indexed
     mapping = {}
-    for i, name in enumerate(col_a):
+    for i, name in enumerate(col_b):
         if name.strip() and name.strip().lower() != "driver":
             mapping[name.strip().lower()] = i + 1  # 1-indexed row
     return mapping
@@ -396,7 +403,7 @@ def calc_wcc_points(ws, driver_rows):
 
     # AI drivers — map by last name
     ai_to_team = {
-        "russel":     "Mercedes-AMG F1 Team",
+        "antonelli":     "Mercedes-AMG F1 Team",
         "norris":     "McLaren",
         "verstappen": "Oracle Red Bull Racing",
         "sainz":      "Atlassian Williams F1 Team",
@@ -410,7 +417,7 @@ def calc_wcc_points(ws, driver_rows):
         "perez":      "Cadillac Formula 1® Team",
         "bottas":     "Cadillac Formula 1® Team",
         "lawson":     "Visa Cash App Racing Bulls",
-        "Lindblad":    "Visa Cash App Racing Bulls",
+        "lindblad":   "Visa Cash App Racing Bulls",
         "gasly":      "Alpine",
         "colapinto":  "Alpine",
     }
@@ -457,11 +464,12 @@ def update_wcc_table(ws, team_points):
     # Determine column indices for WCC team cells
     start_col = col_letter_to_index(WCC_TEAM_COL) + 1   # 1-indexed
     end_col   = col_letter_to_index(WCC_TEAM_COL_END) + 1
+    pts_col = col_letter_to_index(WCC_PTS_COL) + 1
+    pts_end = col_letter_to_index(WCC_PTS_COL_END) + 1
 
     # We'll use the Sheets API directly via gspread's spreadsheet object
     # to update both values and background colors
     requests = []
-
     for i, (team_name, color) in enumerate(ranked):
         row = WCC_START_ROW + i  # 1-indexed sheet row
 
@@ -491,6 +499,9 @@ def update_wcc_table(ws, team_points):
             }
         })
 
+        pts_cell = gspread.utils.rowcol_to_a1(row, pts_col)
+        ws.update(range_name=pts_cell, values=[[team_points.get(csv_team, 0)]])
+
     if requests:
         ws.spreadsheet.batch_update({"requests": requests})
         print(f"   WCC table updated and re-sorted")
@@ -498,7 +509,7 @@ def update_wcc_table(ws, team_points):
 def update_wdc_table(ws, driver_rows):
     """
     Re-sort the WDC table by total points descending.
-    Reads totals from AF (SUM formula), writes driver name + points to WDC table.
+    Reads totals from AG (SUM formula), writes driver name + points to WDC table.
     """
     all_values = ws.get_all_values()
     total_col_idx = col_letter_to_index(TOTAL_COL)  # AF, 0-based
@@ -515,7 +526,7 @@ def update_wdc_table(ws, driver_rows):
         else:
             pts = 0
         # Get display name from sheet (preserves original casing)
-        display_name = row_data[0] if row_data else sheet_name
+        display_name = row_data[1] if len(row_data) > 1 else sheet_name
         driver_totals.append((pts, display_name))
 
     # Sort by points descending
