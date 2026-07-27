@@ -1,0 +1,955 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --bg: #0d0d0d;
+  --surface: #131313;
+  --surface2: #1a1a1a;
+  --surface3: #222222;
+  --accent: #e10600;
+  --text: #ffffff;
+  --text-sub: #888888;
+  --text-muted: #444444;
+  --border: #242424;
+  --nav-h: 52px;
+
+  /* Team palette */
+  --ferrari: #e8001d;
+  --mclaren: #ff8000;
+  --mercedes: #00d2be;
+  --redbull: #3671c6;
+  --williams: #64aaff;
+  --audi: #999999;
+  --haas: #aaaaaa;
+  --astonmartin: #358c75;
+  --cadillac: #bbbbbb;
+  --racingbulls: #5470c6;
+  --alpine: #ff87bc;
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-h);
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.nav-logo em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links>li>a {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  transition: color 0.18s;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links>li>a:hover {
+  color: var(--text);
+}
+
+.nav-links>li.active>a {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Dropdown trigger */
+.nav-item {
+  position: relative;
+}
+
+.nav-item>a {
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: -40px;
+  width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 20px 20px 20px 0;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.nav-dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Open on hover of the whole nav item (label + dropdown),
+   so the mouse can travel from "Season" down into the panel
+   without it closing. */
+.nav-item--season:hover .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Red left stripe */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+}
+
+.dropdown-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 0 0 14px 20px;
+  margin-left: 3px;
+  /* clear the stripe */
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 0 0 20px;
+  margin-left: 3px;
+}
+
+.dropdown-grid a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-sub);
+  padding: 9px 0;
+  transition: color 0.15s;
+  display: block;
+}
+
+.dropdown-grid a:hover {
+  color: var(--text);
+}
+
+.dropdown-grid a.current {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   PAGE WRAPPER
+   ============================================================ */
+.page {
+  padding-top: var(--nav-h);
+  min-height: 100vh;
+}
+
+/* ============================================================
+   HERO  (index.html)
+   ============================================================ */
+.hero {
+  height: calc(100vh - var(--nav-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  /* Drop Images/hero-bg.jpg here when ready:
+     background: url('../Images/hero-bg.jpg') center/cover no-repeat; */
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 20% 60%, rgba(225, 6, 0, 0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 50% at 85% 25%, rgba(225, 6, 0, 0.07) 0%, transparent 60%),
+    #0d0d0d;
+}
+
+/* Subtle grid texture — circuit-board feel */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.55;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 18px 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-bottom: 26px;
+}
+
+.pulse-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.55;
+  animation: pulse-dot 1.8s ease-out infinite;
+}
+
+@keyframes pulse-dot {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.6;
+  }
+
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(38px, 8vw, 100px);
+  line-height: 0.88;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero-title em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.hero-sub {
+  font-size: 15px;
+  color: var(--text-sub);
+  margin-bottom: 38px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 14px 34px;
+  border: none;
+  display: inline-block;
+  transition: background 0.18s, transform 0.14s;
+}
+
+.btn-primary:hover {
+  background: #ff1a17;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.18s;
+}
+
+.btn-ghost::after {
+  content: '→';
+}
+
+.btn-ghost:hover {
+  color: var(--text);
+}
+
+/* ============================================================
+   SEASON HEADER  (season/1.html)
+   ============================================================ */
+.season-header-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 40px 0;
+}
+
+.season-header {
+  background: linear-gradient(135deg, rgba(225, 6, 0, 0.06), var(--surface) 60%);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.season-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.season-eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.season-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+
+.season-num {
+  color: var(--text-sub);
+}
+
+.season-badges {
+  display: flex;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-sub);
+}
+
+.badge.live {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Season switcher */
+.switcher-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  margin-bottom: 8px;
+  text-align: right;
+}
+
+.switcher-select {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  min-width: 160px;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+/* ============================================================
+   STANDINGS INTERFACE
+   ============================================================ */
+.standings-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+}
+
+/* Shared row: page tabs (left) + drivers/constructors toggle (right) */
+.standings-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 24px 0 16px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Page tabs: STANDINGS | CALENDAR */
+.page-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.page-tab {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: var(--text-sub);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.page-tab:hover {
+  color: var(--text);
+}
+
+.page-tab.active {
+  color: #fff;
+  background: var(--accent);
+}
+
+/* DRIVERS | CONSTRUCTORS toggle */
+.standings-controls {
+  display: flex;
+}
+
+.standings-controls.hidden {
+  display: none;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-btn {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  background: transparent;
+  color: var(--text-sub);
+  border: none;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.toggle-btn:hover {
+  color: var(--text);
+}
+
+.toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ============================================================
+   STANDINGS TABLE
+   ============================================================ */
+.standings-panel {
+  display: block;
+}
+
+.standings-panel.hidden {
+  display: none;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.s-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.s-table thead tr {
+  background: var(--surface2);
+}
+
+.s-table th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.s-table th.r {
+  text-align: right;
+}
+
+.s-table tbody tr {
+  border-left: 3px solid transparent;
+  transition: background 0.12s;
+  height: 52px;
+}
+
+.s-table tbody tr:hover {
+  background: var(--surface2);
+}
+
+.s-table tbody tr+tr {
+  border-top: 1px solid var(--border);
+}
+
+/* Team-coloured left border — the signature element */
+.s-table tr[data-team="ferrari"] {
+  border-left-color: var(--ferrari);
+}
+
+.s-table tr[data-team="mclaren"] {
+  border-left-color: var(--mclaren);
+}
+
+.s-table tr[data-team="mercedes"] {
+  border-left-color: var(--mercedes);
+}
+
+.s-table tr[data-team="redbull"] {
+  border-left-color: var(--redbull);
+}
+
+.s-table tr[data-team="williams"] {
+  border-left-color: var(--williams);
+}
+
+.s-table tr[data-team="audi"] {
+  border-left-color: var(--audi);
+}
+
+.s-table tr[data-team="haas"] {
+  border-left-color: var(--haas);
+}
+
+.s-table tr[data-team="astonmartin"] {
+  border-left-color: var(--astonmartin);
+}
+
+.s-table tr[data-team="cadillac"] {
+  border-left-color: var(--cadillac);
+}
+
+.s-table tr[data-team="racingbulls"] {
+  border-left-color: var(--racingbulls);
+}
+
+.s-table tr[data-team="alpine"] {
+  border-left-color: var(--alpine);
+}
+
+.s-table td {
+  padding: 0 14px;
+  vertical-align: middle;
+}
+
+.td-pos {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-sub);
+  width: 52px;
+  white-space: nowrap;
+}
+
+.td-name {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.td-name.player {
+  font-weight: 700;
+}
+
+.td-team {
+  font-size: 13px;
+  font-weight: 500;
+  width: 150px;
+  white-space: nowrap;
+}
+
+/* Team name colours */
+.tc-ferrari {
+  color: var(--ferrari);
+}
+
+.tc-mclaren {
+  color: var(--mclaren);
+}
+
+.tc-mercedes {
+  color: var(--mercedes);
+}
+
+.tc-redbull {
+  color: var(--redbull);
+}
+
+.tc-williams {
+  color: var(--williams);
+}
+
+.tc-audi {
+  color: var(--audi);
+}
+
+.tc-haas {
+  color: var(--haas);
+}
+
+.tc-astonmartin {
+  color: var(--astonmartin);
+}
+
+.tc-cadillac {
+  color: var(--cadillac);
+}
+
+.tc-racingbulls {
+  color: var(--racingbulls);
+}
+
+.tc-alpine {
+  color: var(--alpine);
+}
+
+.td-pts {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+  width: 80px;
+}
+
+.td-pts.leader {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.td-gap {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-sub);
+  text-align: right;
+  width: 70px;
+}
+
+/* Pre-season notice */
+.pre-season-note {
+  text-align: center;
+  padding: 28px 0 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Calendar coming soon */
+.coming-soon {
+  padding: 80px 0;
+  text-align: center;
+  color: var(--text-sub);
+  font-size: 13px;
+}
+
+.coming-soon strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CALENDAR
+   ============================================================ */
+.cal-list {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+  margin: 28px 0 8px;
+}
+
+.cal-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 20px;
+  transition: background 0.12s;
+}
+
+.cal-row+.cal-row {
+  border-top: 1px solid var(--border);
+}
+
+.cal-row:hover {
+  background: var(--surface2);
+}
+
+.cal-round {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-sub);
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.cal-flag {
+  font-size: 17px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.cal-country {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  width: 190px;
+  flex-shrink: 0;
+}
+
+.cal-gp {
+  font-size: 12px;
+  color: var(--text-sub);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Highlighted upcoming round */
+.cal-row.next-race {
+  background: rgba(225, 6, 0, 0.08);
+  border-left: 3px solid var(--accent);
+  padding-left: 17px;
+}
+
+.cal-row.next-race .cal-country {
+  color: var(--accent);
+}
+
+.cal-badge-next {
+  background: var(--accent);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .cal-gp {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .cal-country {
+    width: auto;
+    flex: 1;
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-logo em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: var(--text-muted);
+}

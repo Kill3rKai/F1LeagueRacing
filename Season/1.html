@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Season 1 — VSM F1 League</title>
+  <link rel="stylesheet" href="../Style/main.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+     NAV
+     ============================================================ -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">VSM <em>F1</em> League</a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="nav-item nav-item--season active">
+          <a href="1.html">Season</a>
+          <div class="nav-dropdown">
+            <div class="dropdown-label">All Seasons</div>
+            <div class="dropdown-grid">
+              <a href="1.html" class="current">Season 1</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="https://discord.gg/tXmGZc8z87" target="_blank" rel="noopener">Discord</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+     PAGE
+     ============================================================ -->
+  <div class="page">
+
+    <!-- Season header -->
+    <div class="season-header-wrap">
+      <div class="season-header">
+        <div>
+          <p class="season-eyebrow">Season I</p>
+          <h1 class="season-title">Season <span class="season-num">1</span></h1>
+          <div class="season-badges">
+            <span class="badge">F1 26</span>
+            <span class="badge live">Active Season</span>
+          </div>
+        </div>
+        <div>
+          <p class="switcher-label">Switch Season</p>
+          <select class="switcher-select" onchange="window.location.href=this.value">
+            <option value="1.html" selected>Season 1</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Standings interface -->
+    <div class="standings-wrap">
+
+      <!-- Page tabs + Drivers/Constructors toggle, same row -->
+      <div class="standings-topbar">
+        <div class="page-tabs">
+          <button class="page-tab active" data-panel="standings">Standings</button>
+          <button class="page-tab" data-panel="calendar">Calendar</button>
+        </div>
+        <div class="toggle-group standings-controls">
+          <button class="toggle-btn active" data-target="drivers">Drivers</button>
+          <button class="toggle-btn" data-target="constructors">Constructors</button>
+        </div>
+      </div>
+
+      <!-- ——— STANDINGS PANEL ——— -->
+      <div class="standings-panel" data-panel="standings">
+
+        <p class="pre-season-note">Season 1 has not yet started — all points at zero.</p>
+
+        <!-- ——— DRIVER STANDINGS ——— -->
+        <div class="standings-panel table-wrap" data-table="drivers">
+          <table class="s-table">
+            <thead>
+              <tr>
+                <th>Pos</th>
+                <th>Driver</th>
+                <th>Team</th>
+                <th class="r">Pts</th>
+                <th class="r">Gap</th>
+              </tr>
+            </thead>
+            <tbody><!-- rows injected by Scripts/standings.js from Scripts/standings-data.js --></tbody>
+          </table>
+        </div><!-- /drivers -->
+
+        <!-- ——— CONSTRUCTOR STANDINGS ——— -->
+        <div class="standings-panel table-wrap hidden" data-table="constructors">
+          <table class="s-table">
+            <thead>
+              <tr>
+                <th>Pos</th>
+                <th>Constructor</th>
+                <th class="r">Pts</th>
+                <th class="r">Gap</th>
+              </tr>
+            </thead>
+            <tbody><!-- rows injected by Scripts/standings.js from Scripts/standings-data.js --></tbody>
+          </table>
+        </div><!-- /constructors -->
+
+      </div><!-- /standings panel -->
+
+      <!-- ——— CALENDAR PANEL ——— -->
+      <div class="standings-panel hidden" data-panel="calendar">
+        <div class="cal-list" id="cal-list"><!-- rows injected by Scripts/calendar.js — edit RACES there --></div>
+      </div>
+
+    </div><!-- /standings-wrap -->
+
+    <footer class="footer">
+      <span class="footer-logo">VSM <em>F1</em> League</span>
+      <span class="footer-copy">Season 1 &mdash; F1 26</span>
+    </footer>
+
+  </div><!-- /page -->
+
+  <script>
+    window.CURRENT_SEASON = 1;
+    window.STANDINGS_JSON_PATH = '../Scripts/standings.json';
+  </script>
+  <script src="../Scripts/standings.js"></script>
+  <script src="../Scripts/calendar.js"></script>
+  <script src="../Scripts/main.js"></script>
+</body>
+
+</html>

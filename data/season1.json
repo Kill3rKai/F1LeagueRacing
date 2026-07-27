@@ -1,0 +1,224 @@
+{
+  "drivers": {
+    "Kai": {
+      "team_slug": "ferrari",
+      "team_name": "Ferrari",
+      "is_player": true,
+      "races": {
+        "2": 0,
+        "2S": 2,
+        "1": 0
+      }
+    },
+    "Deshy": {
+      "team_slug": "ferrari",
+      "team_name": "Ferrari",
+      "is_player": true,
+      "races": {
+        "2": 12,
+        "2S": 5,
+        "1": 0
+      }
+    },
+    "Tom": {
+      "team_slug": "mclaren",
+      "team_name": "McLaren",
+      "is_player": true,
+      "races": {
+        "2": 10,
+        "2S": 0,
+        "1": 10
+      }
+    },
+    "Téo": {
+      "team_slug": "redbull",
+      "team_name": "Red Bull",
+      "is_player": true,
+      "races": {
+        "2": 15,
+        "2S": 8,
+        "1": 15
+      }
+    },
+    "Rehan": {
+      "team_slug": "mercedes",
+      "team_name": "Mercedes",
+      "is_player": true,
+      "races": {
+        "2": 2,
+        "2S": 3,
+        "1": 2
+      }
+    },
+    "Antonelli": {
+      "team_slug": "mercedes",
+      "team_name": "Mercedes",
+      "is_player": false,
+      "races": {
+        "2": 12,
+        "2S": 0,
+        "1": 12
+      }
+    },
+    "Verstappen": {
+      "team_slug": "redbull",
+      "team_name": "Red Bull",
+      "is_player": false,
+      "races": {
+        "2": 18,
+        "2S": 1,
+        "1": 18
+      }
+    },
+    "Norris": {
+      "team_slug": "mclaren",
+      "team_name": "McLaren",
+      "is_player": false,
+      "races": {
+        "2": 25,
+        "2S": 0,
+        "1": 25
+      }
+    },
+    "Sainz": {
+      "team_slug": "williams",
+      "team_name": "Williams",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Albon": {
+      "team_slug": "williams",
+      "team_name": "Williams",
+      "is_player": false,
+      "races": {
+        "2": 8,
+        "2S": 0,
+        "1": 8
+      }
+    },
+    "Hülkenberg": {
+      "team_slug": "audi",
+      "team_name": "Audi",
+      "is_player": false,
+      "races": {
+        "2": 6,
+        "2S": 7,
+        "1": 6
+      }
+    },
+    "Bortoleto": {
+      "team_slug": "audi",
+      "team_name": "Audi",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Bearman": {
+      "team_slug": "haas",
+      "team_name": "Haas",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 6,
+        "1": 0
+      }
+    },
+    "Ocon": {
+      "team_slug": "haas",
+      "team_name": "Haas",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Alonso": {
+      "team_slug": "astonmartin",
+      "team_name": "Aston Martin",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 4,
+        "1": 0
+      }
+    },
+    "Stroll": {
+      "team_slug": "astonmartin",
+      "team_name": "Aston Martin",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Pérez": {
+      "team_slug": "cadillac",
+      "team_name": "Cadillac",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Bottas": {
+      "team_slug": "cadillac",
+      "team_name": "Cadillac",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Lawson": {
+      "team_slug": "racingbulls",
+      "team_name": "Racing Bulls",
+      "is_player": false,
+      "races": {
+        "2": 1,
+        "2S": 0,
+        "1": 1
+      }
+    },
+    "Lindblad": {
+      "team_slug": "racingbulls",
+      "team_name": "Racing Bulls",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    },
+    "Gasly": {
+      "team_slug": "alpine",
+      "team_name": "Alpine",
+      "is_player": false,
+      "races": {
+        "2": 4,
+        "2S": 0,
+        "1": 4
+      }
+    },
+    "Colapinto": {
+      "team_slug": "alpine",
+      "team_name": "Alpine",
+      "is_player": false,
+      "races": {
+        "2": 0,
+        "2S": 0,
+        "1": 0
+      }
+    }
+  }
+}
