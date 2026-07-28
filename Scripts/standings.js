@@ -18,19 +18,33 @@
      <script src="../Scripts/standings.js"></script>
    ============================================================ */
 
+function slugifyName(name) {
+  // "Téo" -> "teo" — strips accents so filenames stay plain ASCII
+  return name
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '');
+}
+
 function renderDriverTable(drivers) {
   const tbody = document.querySelector('[data-table="drivers"] tbody');
   if (!tbody) return;
 
-  tbody.innerHTML = drivers.map(d => `
+  tbody.innerHTML = drivers.map(d => {
+    const nameHtml = d.isPlayer
+      ? `<a href="../drivers/${slugifyName(d.name)}.html" class="driver-link">${d.name}</a>`
+      : d.name;
+    return `
     <tr data-team="${d.teamSlug}">
       <td class="td-pos">${String(d.pos).padStart(2, '0')}</td>
-      <td class="td-name${d.isPlayer ? ' player' : ''}">${d.name}${d.isPlayer ? ' ★' : ''}</td>
+      <td class="td-name${d.isPlayer ? ' player' : ''}">${nameHtml}${d.isPlayer ? ' ★' : ''}</td>
       <td class="td-team tc-${d.teamSlug}">${d.team}</td>
       <td class="td-pts${d.pos === 1 ? ' leader' : ''}">${d.pts}</td>
       <td class="td-gap">${d.gap}</td>
     </tr>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderConstructorTable(constructors) {

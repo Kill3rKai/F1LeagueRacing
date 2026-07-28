@@ -1,0 +1,235 @@
+/* ============================================================
+   VSM F1 League — drivers.css
+   Styles ONLY for driver profile pages (drivers/*.html).
+   Link AFTER main.css.
+   ============================================================ */
+
+/* Sticky footer for short pages */
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 60px;
+}
+
+/* ============================================================
+   DRIVER HEADER
+   ============================================================ */
+
+/* width: 100% is the critical fix — without it flex-column
+   children can shrink to content width instead of filling the page */
+.driver-header-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 40px 0;
+  box-sizing: border-box;
+}
+
+.driver-header {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+/* Photo — portrait shape, larger than before */
+.driver-photo {
+  width: 200px;
+  height: 220px;
+  border-radius: 6px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+}
+
+.driver-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* The nameless info div — flex: 1 makes it fill remaining width.
+   This was the root cause of everything being tiny. */
+.driver-header > div:not(.driver-photo) {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 220px; /* match photo height */
+}
+
+.driver-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.driver-team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 18px 6px 6px;
+  border: 1px solid var(--border);
+  border-radius: 3px;        
+  background: var(--surface2);
+  color: var(--text);
+  width: fit-content;
+  margin-bottom: 20px;
+  transform: skewX(-8deg);      
+}
+
+.driver-team-badge .team-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  color: #0d0d0d;
+}
+
+/* Team icon bg colours */
+.tc-bg-ferrari      { background: var(--ferrari); }
+.tc-bg-mclaren      { background: var(--mclaren); }
+.tc-bg-mercedes     { background: var(--mercedes); }
+.tc-bg-redbull      { background: var(--redbull); color: #fff; }
+.tc-bg-williams     { background: var(--williams); }
+.tc-bg-audi         { background: var(--audi); }
+.tc-bg-haas         { background: var(--haas); }
+.tc-bg-astonmartin  { background: var(--astonmartin); color: #fff; }
+.tc-bg-cadillac     { background: var(--cadillac); }
+.tc-bg-racingbulls  { background: var(--racingbulls); color: #fff; }
+.tc-bg-alpine       { background: var(--alpine); }
+
+.driver-social {
+  display: flex;
+  gap: 20px;
+}
+
+.driver-social a {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+  transition: color 0.15s;
+}
+
+.driver-social a:hover { color: var(--accent); }
+
+/* ============================================================
+   CAREER STATS
+   ============================================================ */
+
+.stats-heading {
+  width: 100%;
+  max-width: 1100px;
+  margin: 44px auto 0;
+  padding: 0 40px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+.stats-grid {
+  width: 100%;
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 40px 60px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 16px;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 52px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  margin-top: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-sub);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 700px) {
+  .driver-header {
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 24px;
+    gap: 24px;
+  }
+
+  .driver-photo {
+    width: 100%;
+    height: 200px;
+  }
+
+  .driver-header > div:not(.driver-photo) {
+    width: 100%;
+    text-align: center;
+    min-height: auto;
+  }
+
+  .driver-social { justify-content: center; }
+  .driver-team-badge { margin: 0 auto 16px; }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 24px 40px;
+  }
+}

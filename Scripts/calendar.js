@@ -41,7 +41,7 @@ function renderCalendar() {
   if (!list) return;
 
   list.innerHTML = RACES.map(race => `
-    <div class="cal-row${race.next ? ' next-race' : ''}">
+    <div class="cal-row${race.next ? ' next-race' : ''}" data-round="${race.round}">
       <span class="cal-round">R${String(race.round).padStart(2, '0')}</span>
       <span class="cal-flag">${race.flag}</span>
       <span class="cal-country">${race.country}</span>

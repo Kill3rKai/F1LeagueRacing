@@ -723,6 +723,16 @@ button {
   font-weight: 700;
 }
 
+.driver-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.driver-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
 .td-team {
   font-size: 13px;
   font-weight: 500;
@@ -920,6 +930,100 @@ button {
   .cal-country {
     width: auto;
     flex: 1;
+  }
+}
+
+/* ——— Podium strip (completed races, filled in from Scripts/podium.js) ——— */
+.cal-row.has-podium {
+  cursor: pointer;
+}
+
+.cal-caret {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-sub);
+  flex-shrink: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.cal-row.podium-open .cal-caret {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.cal-podium {
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--surface2);
+  border-top: 1px solid transparent;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+}
+
+.cal-podium.open {
+  max-height: 200px;
+  padding: 4px 20px 18px;
+  border-top: 1px solid var(--border);
+}
+
+.podium-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  min-width: 0;
+}
+
+.podium-pos {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-sub);
+  flex-shrink: 0;
+}
+
+.podium-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: #0d0d0d;
+  flex-shrink: 0;
+}
+
+.podium-info {
+  min-width: 0;
+}
+
+.podium-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 700px) {
+  .cal-podium {
+    flex-direction: column;
+  }
+
+  .cal-podium.open {
+    max-height: 260px;
   }
 }
 
