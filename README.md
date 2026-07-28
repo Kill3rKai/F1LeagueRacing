@@ -109,3 +109,4 @@ Then open `http://localhost:8000` in your browser.
 - The script currently supports the seasons defined in the `SEASONS` dictionary inside `update.py`.
 - If multiple human players share the same team in a race, the script will ask you to resolve those positions manually.
 - If the repository uses a different filename than shown in examples, run `python update.py` from the repo root.
+- VSM League [Link](kill3rkai.github.io/F1LeagueRacing/)
