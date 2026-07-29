@@ -29,6 +29,11 @@ const PODIUMS = {
     { pos: 2, code: 'VER', name: 'Verstappen', teamSlug: 'redbull' },
     { pos: 3, code: 'ASH', name: 'Teo',   teamSlug: 'redbull' },
   ],
+  3: [
+    { pos: 1, code: 'REH', name: 'Rehan',   teamSlug: 'mercedes' },
+    { pos: 2, code: 'ASH', name: 'Teo', teamSlug: 'redbull' },
+    { pos: 3, code: 'KAI', name: 'Kai',   teamSlug: 'ferrari' },
+  ],
 };
 
 function renderPodiums() {

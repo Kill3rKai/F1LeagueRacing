@@ -215,10 +215,7 @@ def resolve_shared_teams(race_df, config, csv_team):
     players = config["player_map"][csv_team]
     named = config["named_players"]
     rows = race_df[race_df["Team"].astype(str).str.strip() == csv_team]
-    rows = rows[rows["driver type"].astype(str).str.strip() == "Player"]
-    # Exclude rows already resolved via named_players (e.g. "Kill3rKai" -> Kai)
-    # so we only ask about the truly ambiguous "Player" rows on this team.
-    rows = rows[~rows["Driver"].astype(str).str.strip().isin(named.keys())]
+    rows = rows[rows["Driver"].astype(str).str.strip() == "Player"]
 
     resolution = {}
     print(f"\n  {csv_team} has {len(players)} players on the same team: {', '.join(players)}")
@@ -255,18 +252,13 @@ def resolve_all_drivers(race_df, config, is_sprint):
         if csv_name in named_players:
             sheet_name = named_players[csv_name]
 
-        elif driver_type == "AI":
-            last = csv_name.split()[-1]
-            match = next((n for n in roster_names if _fold(last) in _fold(n)), None)
-            if match is None:
-                print(f"  [WARN] No roster match for AI '{csv_name}' — skipping")
-                continue
-            sheet_name = match
-
-        elif driver_type == "Player" and team in player_map and len(player_map[team]) == 1:
+        elif csv_name == "Player" and team in player_map and len(player_map[team]) == 1:
+            # Generic "Player" name always means a human seat for that team,
+            # regardless of what the "driver type" column says — F1 26 mislabels
+            # this during AFK/takeover swaps, so we don't trust that column here.
             sheet_name = player_map[team][0]
 
-        elif driver_type == "Player" and team in player_map and len(player_map[team]) > 1:
+        elif csv_name == "Player" and team in player_map and len(player_map[team]) > 1:
             if team not in shared_cache:
                 shared_cache[team] = resolve_shared_teams(race_df, config, team)
             sheet_name = shared_cache[team].get(pos)
@@ -275,8 +267,15 @@ def resolve_all_drivers(race_df, config, is_sprint):
                 continue
 
         else:
-            print(f"  [WARN] Unhandled driver: {csv_name} / {team} / {driver_type} — skipping")
-            continue
+            # A real name (not the literal "Player") — match by surname against
+            # the roster, same as before. This covers normal AI rows and also
+            # the reverse takeover glitch (an AI driver's name tagged "Player").
+            last = csv_name.split()[-1]
+            match = next((n for n in roster_names if _fold(last) in _fold(n)), None)
+            if match is None:
+                print(f"  [WARN] No roster match for '{csv_name}' — skipping")
+                continue
+            sheet_name = match
 
         results[sheet_name] = (pts, team)
         status = f"P{int(pos)} -> {pts}pts" if pos == pos else "DNF/DSQ -> 0pts"

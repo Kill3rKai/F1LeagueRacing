@@ -14,8 +14,8 @@
 const RACES = [
   { round: 1,  flag: '🇦🇺', country: 'Australia',            gp: 'Qatar Airways Australian Grand Prix' },
   { round: 2,  flag: '🇨🇳', country: 'China',                 gp: 'Heineken Chinese Grand Prix' },
-  { round: 3,  flag: '🇯🇵', country: 'Japan',                 gp: 'Aramco Japanese Grand Prix', next: true },
-  { round: 4,  flag: '🇺🇸', country: 'Miami',                 gp: 'Crypto.com Miami Grand Prix' },
+  { round: 3,  flag: '🇯🇵', country: 'Japan',                 gp: 'Aramco Japanese Grand Prix', },
+  { round: 4,  flag: '🇺🇸', country: 'Miami',                 gp: 'Crypto.com Miami Grand Prix', next: true },
   { round: 5,  flag: '🇨🇦', country: 'Canada',                gp: 'Lenovo Grand Prix du Canada' },
   { round: 6,  flag: '🇲🇨', country: 'Monaco',                gp: 'Louis Vuitton Grand Prix de Monaco' },
   { round: 7,  flag: '🇪🇸', country: 'Barcelona-Catalunya',   gp: 'MSC Cruises Gran Premio de Barcelona-Catalunya' },
