@@ -29,7 +29,7 @@ const DRIVERS = [
   { name: 'Deshy', team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/deshyPFP.jpg', link: 'drivers/deshy.html' },
   { name: 'Tom',   team: 'McLaren',  teamSlug: 'mclaren',  photo: 'Images/DriverTom.jpg',   link: 'drivers/tom.html' },
   { name: 'Téo',   team: 'Red Bull', teamSlug: 'redbull',  photo: 'Images/TeoDriver.png',   link: 'drivers/teo.html' },
-  { name: 'Rehan', team: 'Mercedes', teamSlug: 'mercedes', photo: 'Images/rehanPFP.png', link: 'drivers/rehan.html' },
+  { name: 'Rehan', team: 'Mercedes', teamSlug: 'mercedes', photo: 'Images/rehan1.jpg', link: 'drivers/rehan.html' },
 ];
 
 function initials(name) {
