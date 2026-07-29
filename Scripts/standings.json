@@ -2,22 +2,13 @@
   "1": {
     "drivers": [
       {
-        "name": "Rehan",
-        "team": "Mercedes",
-        "teamSlug": "mercedes",
-        "isPlayer": true,
-        "pts": 45,
-        "pos": 1,
-        "gap": "—"
-      },
-      {
         "name": "Téo",
         "team": "Red Bull",
         "teamSlug": "redbull",
         "isPlayer": true,
         "pts": 41,
-        "pos": 2,
-        "gap": "-4"
+        "pos": 1,
+        "gap": "—"
       },
       {
         "name": "Antonelli",
@@ -25,8 +16,8 @@
         "teamSlug": "mercedes",
         "isPlayer": false,
         "pts": 35,
-        "pos": 3,
-        "gap": "-10"
+        "pos": 2,
+        "gap": "-6"
       },
       {
         "name": "Norris",
@@ -34,8 +25,8 @@
         "teamSlug": "mclaren",
         "isPlayer": false,
         "pts": 35,
-        "pos": 4,
-        "gap": "-10"
+        "pos": 3,
+        "gap": "-6"
       },
       {
         "name": "Deshy",
@@ -43,6 +34,15 @@
         "teamSlug": "ferrari",
         "isPlayer": true,
         "pts": 34,
+        "pos": 4,
+        "gap": "-7"
+      },
+      {
+        "name": "Rehan",
+        "team": "Mercedes",
+        "teamSlug": "mercedes",
+        "isPlayer": true,
+        "pts": 30,
         "pos": 5,
         "gap": "-11"
       },
@@ -53,7 +53,7 @@
         "isPlayer": false,
         "pts": 29,
         "pos": 6,
-        "gap": "-16"
+        "gap": "-12"
       },
       {
         "name": "Tom",
@@ -62,7 +62,7 @@
         "isPlayer": true,
         "pts": 22,
         "pos": 7,
-        "gap": "-23"
+        "gap": "-19"
       },
       {
         "name": "Albon",
@@ -71,7 +71,7 @@
         "isPlayer": false,
         "pts": 18,
         "pos": 8,
-        "gap": "-27"
+        "gap": "-23"
       },
       {
         "name": "Kai",
@@ -80,7 +80,7 @@
         "isPlayer": true,
         "pts": 17,
         "pos": 9,
-        "gap": "-28"
+        "gap": "-24"
       },
       {
         "name": "Gasly",
@@ -89,7 +89,7 @@
         "isPlayer": false,
         "pts": 14,
         "pos": 10,
-        "gap": "-31"
+        "gap": "-27"
       },
       {
         "name": "Hülkenberg",
@@ -98,7 +98,7 @@
         "isPlayer": false,
         "pts": 13,
         "pos": 11,
-        "gap": "-32"
+        "gap": "-28"
       },
       {
         "name": "Lindblad",
@@ -107,7 +107,7 @@
         "isPlayer": false,
         "pts": 12,
         "pos": 12,
-        "gap": "-33"
+        "gap": "-29"
       },
       {
         "name": "Colapinto",
@@ -116,7 +116,7 @@
         "isPlayer": false,
         "pts": 8,
         "pos": 13,
-        "gap": "-37"
+        "gap": "-33"
       },
       {
         "name": "Bearman",
@@ -125,7 +125,7 @@
         "isPlayer": false,
         "pts": 6,
         "pos": 14,
-        "gap": "-39"
+        "gap": "-35"
       },
       {
         "name": "Bortoleto",
@@ -134,7 +134,7 @@
         "isPlayer": false,
         "pts": 6,
         "pos": 15,
-        "gap": "-39"
+        "gap": "-35"
       },
       {
         "name": "Alonso",
@@ -143,7 +143,7 @@
         "isPlayer": false,
         "pts": 5,
         "pos": 16,
-        "gap": "-40"
+        "gap": "-36"
       },
       {
         "name": "Lawson",
@@ -152,7 +152,7 @@
         "isPlayer": false,
         "pts": 3,
         "pos": 17,
-        "gap": "-42"
+        "gap": "-38"
       },
       {
         "name": "Pérez",
@@ -161,7 +161,7 @@
         "isPlayer": false,
         "pts": 2,
         "pos": 18,
-        "gap": "-43"
+        "gap": "-39"
       },
       {
         "name": "Sainz",
@@ -170,7 +170,7 @@
         "isPlayer": false,
         "pts": 1,
         "pos": 19,
-        "gap": "-44"
+        "gap": "-40"
       },
       {
         "name": "Bottas",
@@ -179,7 +179,7 @@
         "isPlayer": false,
         "pts": 0,
         "pos": 20,
-        "gap": "-45"
+        "gap": "-41"
       },
       {
         "name": "Ocon",
@@ -188,7 +188,7 @@
         "isPlayer": false,
         "pts": 0,
         "pos": 21,
-        "gap": "-45"
+        "gap": "-41"
       },
       {
         "name": "Stroll",
@@ -197,86 +197,86 @@
         "isPlayer": false,
         "pts": 0,
         "pos": 22,
-        "gap": "-45"
+        "gap": "-41"
       }
     ],
     "constructors": [
       {
-        "team": "Mercedes",
-        "teamSlug": "mercedes",
-        "pts": 80,
+        "team": "Red Bull",
+        "teamSlug": "redbull",
+        "pts": 70,
         "pos": 1,
         "gap": "—"
       },
       {
-        "team": "Red Bull",
-        "teamSlug": "redbull",
-        "pts": 70,
+        "team": "Mercedes",
+        "teamSlug": "mercedes",
+        "pts": 65,
         "pos": 2,
-        "gap": "-10"
+        "gap": "-5"
       },
       {
         "team": "McLaren",
         "teamSlug": "mclaren",
         "pts": 57,
         "pos": 3,
-        "gap": "-23"
+        "gap": "-13"
       },
       {
         "team": "Ferrari",
         "teamSlug": "ferrari",
         "pts": 51,
         "pos": 4,
-        "gap": "-29"
+        "gap": "-19"
       },
       {
         "team": "Alpine",
         "teamSlug": "alpine",
         "pts": 22,
         "pos": 5,
-        "gap": "-58"
+        "gap": "-48"
       },
       {
         "team": "Audi",
         "teamSlug": "audi",
         "pts": 19,
         "pos": 6,
-        "gap": "-61"
+        "gap": "-51"
       },
       {
         "team": "Williams",
         "teamSlug": "williams",
         "pts": 19,
         "pos": 7,
-        "gap": "-61"
+        "gap": "-51"
       },
       {
         "team": "Racing Bulls",
         "teamSlug": "racingbulls",
         "pts": 15,
         "pos": 8,
-        "gap": "-65"
+        "gap": "-55"
       },
       {
         "team": "Haas",
         "teamSlug": "haas",
         "pts": 6,
         "pos": 9,
-        "gap": "-74"
+        "gap": "-64"
       },
       {
         "team": "Aston Martin",
         "teamSlug": "astonmartin",
         "pts": 5,
         "pos": 10,
-        "gap": "-75"
+        "gap": "-65"
       },
       {
         "team": "Cadillac",
         "teamSlug": "cadillac",
         "pts": 2,
         "pos": 11,
-        "gap": "-78"
+        "gap": "-68"
       }
     ]
   }
