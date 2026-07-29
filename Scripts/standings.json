@@ -2,103 +2,94 @@
   "1": {
     "drivers": [
       {
-        "name": "Deshy",
-        "team": "Ferrari",
-        "teamSlug": "ferrari",
-        "isPlayer": true,
-        "pts": 30,
-        "pos": 1,
-        "gap": "—"
-      },
-      {
-        "name": "Antonelli",
-        "team": "Mercedes",
-        "teamSlug": "mercedes",
-        "isPlayer": false,
-        "pts": 27,
-        "pos": 2,
-        "gap": "-3"
-      },
-      {
-        "name": "Albon",
-        "team": "Williams",
-        "teamSlug": "williams",
-        "isPlayer": false,
-        "pts": 26,
-        "pos": 3,
-        "gap": "-4"
-      },
-      {
         "name": "Norris",
         "team": "McLaren",
         "teamSlug": "mclaren",
         "isPlayer": false,
-        "pts": 25,
-        "pos": 4,
-        "gap": "-5"
+        "pts": 60,
+        "pos": 1,
+        "gap": "—"
       },
       {
         "name": "Téo",
         "team": "Red Bull",
         "teamSlug": "redbull",
         "isPlayer": true,
-        "pts": 23,
-        "pos": 5,
-        "gap": "-7"
+        "pts": 56,
+        "pos": 2,
+        "gap": "-4"
       },
       {
         "name": "Verstappen",
         "team": "Red Bull",
         "teamSlug": "redbull",
         "isPlayer": false,
-        "pts": 23,
-        "pos": 6,
-        "gap": "-7"
-      },
-      {
-        "name": "Gasly",
-        "team": "Alpine",
-        "teamSlug": "alpine",
-        "isPlayer": false,
-        "pts": 14,
-        "pos": 7,
-        "gap": "-16"
-      },
-      {
-        "name": "Hülkenberg",
-        "team": "Audi",
-        "teamSlug": "audi",
-        "isPlayer": false,
-        "pts": 13,
-        "pos": 8,
+        "pts": 43,
+        "pos": 3,
         "gap": "-17"
       },
       {
-        "name": "Lindblad",
-        "team": "Racing Bulls",
-        "teamSlug": "racingbulls",
+        "name": "Antonelli",
+        "team": "Mercedes",
+        "teamSlug": "mercedes",
         "isPlayer": false,
-        "pts": 12,
-        "pos": 9,
-        "gap": "-18"
+        "pts": 32,
+        "pos": 4,
+        "gap": "-28"
+      },
+      {
+        "name": "Rehan",
+        "team": "Mercedes",
+        "teamSlug": "mercedes",
+        "isPlayer": true,
+        "pts": 32,
+        "pos": 5,
+        "gap": "-28"
       },
       {
         "name": "Tom",
         "team": "McLaren",
         "teamSlug": "mclaren",
         "isPlayer": true,
-        "pts": 10,
-        "pos": 10,
-        "gap": "-20"
+        "pts": 32,
+        "pos": 6,
+        "gap": "-28"
       },
       {
-        "name": "Colapinto",
+        "name": "Hülkenberg",
+        "team": "Audi",
+        "teamSlug": "audi",
+        "isPlayer": false,
+        "pts": 19,
+        "pos": 7,
+        "gap": "-41"
+      },
+      {
+        "name": "Deshy",
+        "team": "Ferrari",
+        "teamSlug": "ferrari",
+        "isPlayer": true,
+        "pts": 17,
+        "pos": 8,
+        "gap": "-43"
+      },
+      {
+        "name": "Albon",
+        "team": "Williams",
+        "teamSlug": "williams",
+        "isPlayer": false,
+        "pts": 16,
+        "pos": 9,
+        "gap": "-44"
+      },
+      {
+        "name": "Gasly",
         "team": "Alpine",
         "teamSlug": "alpine",
         "isPlayer": false,
         "pts": 8,
-        "pos": 11,
-        "gap": "-22"
+        "pos": 10,
+        "gap": "-52"
       },
       {
         "name": "Bearman",
@@ -106,71 +97,44 @@
         "teamSlug": "haas",
         "isPlayer": false,
         "pts": 6,
-        "pos": 12,
-        "gap": "-24"
-      },
-      {
-        "name": "Bortoleto",
-        "team": "Audi",
-        "teamSlug": "audi",
-        "isPlayer": false,
-        "pts": 6,
-        "pos": 13,
-        "gap": "-24"
-      },
-      {
-        "name": "Rehan",
-        "team": "Mercedes",
-        "teamSlug": "mercedes",
-        "isPlayer": true,
-        "pts": 5,
-        "pos": 14,
-        "gap": "-25"
+        "pos": 11,
+        "gap": "-54"
       },
       {
         "name": "Alonso",
         "team": "Aston Martin",
         "teamSlug": "astonmartin",
         "isPlayer": false,
-        "pts": 4,
-        "pos": 15,
-        "gap": "-26"
+        "pts": 5,
+        "pos": 12,
+        "gap": "-55"
       },
       {
         "name": "Kai",
         "team": "Ferrari",
         "teamSlug": "ferrari",
         "isPlayer": true,
-        "pts": 2,
-        "pos": 16,
-        "gap": "-28"
-      },
-      {
-        "name": "Pérez",
-        "team": "Cadillac",
-        "teamSlug": "cadillac",
-        "isPlayer": false,
-        "pts": 2,
-        "pos": 17,
-        "gap": "-28"
+        "pts": 4,
+        "pos": 13,
+        "gap": "-56"
       },
       {
         "name": "Lawson",
         "team": "Racing Bulls",
         "teamSlug": "racingbulls",
         "isPlayer": false,
-        "pts": 1,
-        "pos": 18,
-        "gap": "-29"
+        "pts": 2,
+        "pos": 14,
+        "gap": "-58"
       },
       {
-        "name": "Sainz",
-        "team": "Williams",
-        "teamSlug": "williams",
+        "name": "Bortoleto",
+        "team": "Audi",
+        "teamSlug": "audi",
         "isPlayer": false,
-        "pts": 1,
-        "pos": 19,
-        "gap": "-29"
+        "pts": 0,
+        "pos": 15,
+        "gap": "-60"
       },
       {
         "name": "Bottas",
@@ -178,8 +142,26 @@
         "teamSlug": "cadillac",
         "isPlayer": false,
         "pts": 0,
-        "pos": 20,
-        "gap": "-30"
+        "pos": 16,
+        "gap": "-60"
+      },
+      {
+        "name": "Colapinto",
+        "team": "Alpine",
+        "teamSlug": "alpine",
+        "isPlayer": false,
+        "pts": 0,
+        "pos": 17,
+        "gap": "-60"
+      },
+      {
+        "name": "Lindblad",
+        "team": "Racing Bulls",
+        "teamSlug": "racingbulls",
+        "isPlayer": false,
+        "pts": 0,
+        "pos": 18,
+        "gap": "-60"
       },
       {
         "name": "Ocon",
@@ -187,8 +169,26 @@
         "teamSlug": "haas",
         "isPlayer": false,
         "pts": 0,
+        "pos": 19,
+        "gap": "-60"
+      },
+      {
+        "name": "Pérez",
+        "team": "Cadillac",
+        "teamSlug": "cadillac",
+        "isPlayer": false,
+        "pts": 0,
+        "pos": 20,
+        "gap": "-60"
+      },
+      {
+        "name": "Sainz",
+        "team": "Williams",
+        "teamSlug": "williams",
+        "isPlayer": false,
+        "pts": 0,
         "pos": 21,
-        "gap": "-30"
+        "gap": "-60"
       },
       {
         "name": "Stroll",
@@ -197,86 +197,86 @@
         "isPlayer": false,
         "pts": 0,
         "pos": 22,
-        "gap": "-30"
+        "gap": "-60"
       }
     ],
     "constructors": [
       {
         "team": "Red Bull",
         "teamSlug": "redbull",
-        "pts": 46,
+        "pts": 99,
         "pos": 1,
         "gap": "—"
       },
       {
         "team": "McLaren",
         "teamSlug": "mclaren",
-        "pts": 35,
+        "pts": 92,
         "pos": 2,
-        "gap": "-11"
-      },
-      {
-        "team": "Ferrari",
-        "teamSlug": "ferrari",
-        "pts": 32,
-        "pos": 3,
-        "gap": "-14"
+        "gap": "-7"
       },
       {
         "team": "Mercedes",
         "teamSlug": "mercedes",
-        "pts": 32,
+        "pts": 64,
+        "pos": 3,
+        "gap": "-35"
+      },
+      {
+        "team": "Ferrari",
+        "teamSlug": "ferrari",
+        "pts": 21,
         "pos": 4,
-        "gap": "-14"
-      },
-      {
-        "team": "Williams",
-        "teamSlug": "williams",
-        "pts": 27,
-        "pos": 5,
-        "gap": "-19"
-      },
-      {
-        "team": "Alpine",
-        "teamSlug": "alpine",
-        "pts": 22,
-        "pos": 6,
-        "gap": "-24"
+        "gap": "-78"
       },
       {
         "team": "Audi",
         "teamSlug": "audi",
         "pts": 19,
-        "pos": 7,
-        "gap": "-27"
+        "pos": 5,
+        "gap": "-80"
       },
       {
-        "team": "Racing Bulls",
-        "teamSlug": "racingbulls",
-        "pts": 13,
-        "pos": 8,
-        "gap": "-33"
+        "team": "Williams",
+        "teamSlug": "williams",
+        "pts": 16,
+        "pos": 6,
+        "gap": "-83"
+      },
+      {
+        "team": "Alpine",
+        "teamSlug": "alpine",
+        "pts": 8,
+        "pos": 7,
+        "gap": "-91"
       },
       {
         "team": "Haas",
         "teamSlug": "haas",
         "pts": 6,
-        "pos": 9,
-        "gap": "-40"
+        "pos": 8,
+        "gap": "-93"
       },
       {
         "team": "Aston Martin",
         "teamSlug": "astonmartin",
-        "pts": 4,
+        "pts": 5,
+        "pos": 9,
+        "gap": "-94"
+      },
+      {
+        "team": "Racing Bulls",
+        "teamSlug": "racingbulls",
+        "pts": 2,
         "pos": 10,
-        "gap": "-42"
+        "gap": "-97"
       },
       {
         "team": "Cadillac",
         "teamSlug": "cadillac",
-        "pts": 2,
+        "pts": 0,
         "pos": 11,
-        "gap": "-44"
+        "gap": "-99"
       }
     ]
   }
