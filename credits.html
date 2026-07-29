@@ -4,23 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drivers — VSM F1 League</title>
-  <link rel="icon" href="Images/VSM.png" sizes="32x32" />
+  <title>Credits — VSM F1 League</title>
   <link rel="stylesheet" href="Style/main.css">
-  <link rel="stylesheet" href="Style/drivers.css">
+  <link rel="stylesheet" href="Style/credits.css">
 </head>
 
 <body>
 
   <!-- ============================================================
      NAV
+     — Copied from drivers.html. If your nav has changed since
+       (new links, extensionless URLs, etc.) update this block to
+       match the rest of the site.
      ============================================================ -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">VSM <em>F1</em> League</a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="drivers.html">Drivers</a></li>
+        <li><a href="drivers.html">Drivers</a></li>
         <li class="nav-item nav-item--season">
           <a href="season/1.html">Season</a>
           <div class="nav-dropdown">
@@ -30,7 +32,7 @@
             </div>
           </div>
         </li>
-        <li><a href="credits.html">Credits</a></li>
+        <li class="active"><a href="credits.html">Credits</a></li>
         <li><a href="https://discord.gg/tXmGZc8z87" target="_blank" rel="noopener">Discord</a></li>
       </ul>
     </div>
@@ -42,16 +44,16 @@
   <div class="page">
 
     <!-- Header -->
-    <div class="drivers-header-wrap">
-      <div class="drivers-header">
-        <p class="drivers-eyebrow">The Grid</p>
-        <h1 class="drivers-title">Drivers</h1>
-        <p class="drivers-sub">Five drivers. One championship. Zero mercy. Tap a driver to see their stats.</p>
+    <div class="credits-header-wrap">
+      <div class="credits-header">
+        <p class="credits-eyebrow">Behind The Wheel</p>
+        <h1 class="credits-title">Credits</h1>
+        <p class="credits-sub">The people, tools, and community behind VSM F1 League.</p>
       </div>
     </div>
 
-    <!-- Roster grid — populated by Scripts/drivers.js -->
-    <div class="driver-grid" id="driver-grid"></div>
+    <!-- Sections — populated by Scripts/credits.js -->
+    <div id="credits-root"></div>
 
     <footer class="footer">
       <span class="footer-logo">VSM <em>F1</em> League</span>
@@ -60,7 +62,7 @@
 
   </div><!-- /page -->
 
-  <script src="Scripts/drivers.js"></script>
+  <script src="Scripts/credits.js"></script>
   <script src="Scripts/main.js"></script>
 </body>
 
