@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Rename to index.html when deploying -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maintenance // VSM F1 League</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link rel="stylesheet" href="Style/maintenance.css">
+
+  <link rel="icon" href="Images/VSM.png" sizes="32x32" />
+
+  <meta name="theme-color" content="#0d0d0d">
+  <meta name="description" content="VSM F1 League is currently under maintenance.">
+
+  <meta property="og:title" content="VSM F1 League">
+  <meta property="og:description" content="Five drivers. One championship. Zero mercy.">
+  <meta property="og:image" content="Images/VSM.png">
+  <meta property="og:type" content="website">
+</head>
+
+<body>
+
+  <div class="noise"></div>
+  <div class="glow-orb o1"></div>
+  <div class="glow-orb o2"></div>
+
+  <div class="maintenance-wrapper">
+
+    <div class="maint-brand">
+      <div class="maint-logo-mark">VSM</div>
+      <span class="maint-site-name">VSM <em>F1</em> League</span>
+    </div>
+
+    <div class="maint-icon-wrap">
+      <div class="maint-ring"></div>
+      <div class="maint-ring-2"></div>
+      <i class="fa-solid fa-wrench maint-icon"></i>
+    </div>
+
+    <div class="maint-headline">
+      <h1 class="maint-title">Under Maintenance</h1>
+      <p class="maint-sub">System update in progress</p>
+    </div>
+
+    <div class="maint-card">
+      <p class="maint-message">
+        We're currently working on the site.<br>
+        <strong>We'll be back online shortly</strong> — thanks for your patience.
+      </p>
+
+      <div class="boot-log">
+        <div><span class="log-line log-ok">Core systems</span><span class="log-status log-ok">OK</span></div>
+        <div><span class="log-line log-ok">Standings data</span><span class="log-status log-ok">OK</span></div>
+        <div><span class="log-line log-warn">Frontend assets</span><span class="log-status log-warn">UPDATING</span></div>
+        <div><span class="log-line log-wait">Deploying changes</span><span class="log-status log-wait">IN PROGRESS<span class="log-cursor"></span></span></div>
+      </div>
+
+      <div class="maint-progress-wrap">
+        <div class="maint-progress-label">
+          <span>Deployment Progress</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="maint-progress-track">
+          <div class="maint-progress-fill" id="maint-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="maint-socials">
+      <a class="maint-social-link discord" href="https://discord.gg/tXmGZc8z87" target="_blank" rel="noopener">
+        <i class="fa-brands fa-discord"></i> Discord
+      </a>
+    </div>
+
+    <p class="maint-footer">
+      VSM <em>F1</em> LEAGUE &nbsp;·&nbsp; ALL RIGHTS RESERVED &nbsp;·&nbsp; 2026
+    </p>
+
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const bar = document.getElementById('maint-bar');
+        const pct = document.getElementById('progress-pct');
+        const target = Math.floor(Math.random() * 101);
+        bar.style.width = target + '%';
+        let current = 0;
+        const interval = setInterval(() => {
+          current++;
+          pct.textContent = current + '%';
+          if (current >= target) clearInterval(interval);
+        }, 2000 / Math.max(target, 1));
+      }, 800);
+    });
+  </script>
+
+</body>
+</html>

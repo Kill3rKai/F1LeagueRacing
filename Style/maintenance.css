@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   TOKENS — matched to VSM F1 League main.css
+   ============================================================ */
+:root {
+  --bg: #0d0d0d;
+  --surface: #131313;
+  --surface2: #1a1a1a;
+  --surface3: #222222;
+  --accent: #e10600;
+  --text: #ffffff;
+  --text-sub: #888888;
+  --text-muted: #444444;
+  --border: #242424;
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --accent-glow: rgba(225, 6, 0, 0.35);
+  --accent-faint: rgba(225, 6, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── SUBTLE GRID (matches hero texture) ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── NOISE ── */
+.noise {
+  position: fixed;
+  inset: 0;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* ── GLOW ORBS (red-tinted, subtle) ── */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow-orb.o1 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, rgba(225, 6, 0, 0.09) 0%, transparent 70%);
+  top: -180px;
+  left: -160px;
+  animation: orbFloat1 16s ease-in-out infinite;
+}
+
+.glow-orb.o2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(225, 6, 0, 0.06) 0%, transparent 70%);
+  bottom: -120px;
+  right: -100px;
+  animation: orbFloat2 19s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(50px, 60px); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-40px, -50px); }
+}
+
+/* ── PAGE WRAPPER ── */
+.maintenance-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 580px;
+  padding: 48px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  text-align: center;
+}
+
+/* ── BRAND ── */
+.maint-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeDown 0.65s ease both;
+}
+
+.maint-logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.maint-site-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.maint-site-name em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* ── MAIN STATUS ICON ── */
+.maint-icon-wrap {
+  position: relative;
+  animation: fadeUp 0.65s ease 0.08s both;
+}
+
+.maint-icon {
+  font-size: 3.2rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 18px var(--accent-glow));
+  animation: iconPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 18px var(--accent-glow));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 28px var(--accent-glow)) drop-shadow(0 0 50px rgba(225, 6, 0, 0.18));
+    transform: scale(1.05);
+  }
+}
+
+.maint-ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 6, 0, 0.2);
+  animation: ringExpand 2.6s ease-out infinite;
+}
+
+.maint-ring-2 {
+  position: absolute;
+  inset: -34px;
+  border-radius: 50%;
+  border: 1px solid rgba(225, 6, 0, 0.08);
+  animation: ringExpand 2.6s ease-out 0.55s infinite;
+}
+
+@keyframes ringExpand {
+  0%   { opacity: 1; transform: scale(0.85); }
+  100% { opacity: 0; transform: scale(1.35); }
+}
+
+/* ── HEADLINE ── */
+.maint-headline {
+  animation: fadeUp 0.65s ease 0.12s both;
+}
+
+.maint-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 9vw, 3.8rem);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.maint-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--text-sub);
+  text-transform: uppercase;
+}
+
+.maint-sub::before {
+  content: '// ';
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ── STATUS CARD ── */
+.maint-card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 26px 28px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.65s ease 0.18s both;
+}
+
+.maint-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-faint), transparent 55%);
+  pointer-events: none;
+}
+
+.maint-message {
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-sub);
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.maint-message strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ── BOOT LOG ── */
+.boot-log {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  line-height: 1.95;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  position: relative;
+}
+
+.boot-log .log-ok   { color: #3ddc84; }
+.boot-log .log-warn { color: #f5a623; }
+.boot-log .log-wait { color: var(--accent); }
+
+.boot-log .log-line::before {
+  content: '[ ';
+  color: rgba(255, 255, 255, 0.12);
+}
+
+.boot-log .log-line::after {
+  content: ' ]';
+  color: rgba(255, 255, 255, 0.12);
+}
+
+.log-status {
+  float: right;
+  letter-spacing: 0.08em;
+}
+
+.log-cursor {
+  display: inline-block;
+  width: 6px;
+  height: 0.75em;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ── PROGRESS BAR ── */
+.maint-progress-wrap {
+  margin-top: 22px;
+  position: relative;
+}
+
+.maint-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.maint-progress-label span:last-child {
+  color: var(--accent);
+}
+
+.maint-progress-track {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.maint-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #b00500, var(--accent));
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: width 2s cubic-bezier(0.4, 0, 0.2, 1) 0.8s;
+  position: relative;
+}
+
+.maint-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 36px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { transform: translateX(-36px); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: translateX(8px); opacity: 0; }
+}
+
+/* ── SOCIAL ROW ── */
+.maint-socials {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.65s ease 0.25s both;
+}
+
+.maint-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-sub);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.18s ease;
+}
+
+.maint-social-link:hover {
+  color: var(--text);
+  border-color: rgba(225, 6, 0, 0.4);
+  background: rgba(225, 6, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.maint-social-link i {
+  font-size: 0.95rem;
+}
+
+.maint-social-link.discord:hover {
+  border-color: rgba(88, 101, 242, 0.45);
+  background: rgba(88, 101, 242, 0.07);
+  color: #5865f2;
+}
+
+/* ── FOOTER ── */
+.maint-footer {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  animation: fadeUp 0.65s ease 0.3s both;
+}
+
+.maint-footer em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  .maintenance-wrapper {
+    padding: 36px 18px;
+    gap: 22px;
+  }
+
+  .maint-card {
+    padding: 20px 16px;
+  }
+
+  .maint-logo-mark {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .maint-site-name {
+    font-size: 1.15rem;
+  }
+}
