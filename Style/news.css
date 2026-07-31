@@ -284,3 +284,7 @@
         font-size: 32px;
     }
 }
+
+.news-feature-img[style*="background-image"] {
+  background-color: transparent;
+}
