@@ -25,11 +25,11 @@ const TEAM_COLORS = {
 };
 
 const DRIVERS = [
-  { name: 'Kai',   team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/KaiDriver.jpeg',   link: 'drivers/kai.html' },
+  { name: 'Kill3rKai',   team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/KaiDriver.jpeg',   link: 'drivers/kai.html' },
   { name: 'Deshy', team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/deshyPFP.jpg', link: 'drivers/deshy.html' },
-  { name: 'Tom',   team: 'McLaren',  teamSlug: 'mclaren',  photo: 'Images/DriverTom.jpg',   link: 'drivers/tom.html' },
-  { name: 'Téo',   team: 'Red Bull', teamSlug: 'redbull',  photo: 'Images/TeoDriver.png',   link: 'drivers/teo.html' },
-  { name: 'Rehan', team: 'Mercedes', teamSlug: 'mercedes', photo: 'Images/rehan1.jpg', link: 'drivers/rehan.html' },
+  { name: 'Polaris',   team: 'McLaren',  teamSlug: 'mclaren',  photo: 'Images/DriverTom.jpg',   link: 'drivers/tom.html' },
+  { name: 'Ashigaru',   team: 'Red Bull', teamSlug: 'redbull',  photo: 'Images/TeoDriver.png',   link: 'drivers/teo.html' },
+  { name: 'XDLegionair', team: 'Mercedes', teamSlug: 'mercedes', photo: 'Images/rehan1.jpg', link: 'drivers/rehan.html' },
 ];
 
 function initials(name) {

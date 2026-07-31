@@ -1,0 +1,286 @@
+/* ============================================================
+   VSM F1 League — news.css
+   Styles specific to news.html. Relies on tokens + resets
+   already defined in main.css (loaded first).
+   ============================================================ */
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.news-header-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px 0;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+}
+
+.news-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+}
+
+.news-title em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+/* Category filter pills */
+.news-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+}
+
+.filter-pill {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 9px 18px;
+    background: var(--surface2);
+    color: var(--text-sub);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: all 0.15s;
+}
+
+.filter-pill:hover {
+    color: var(--text);
+    border-color: var(--text-muted);
+}
+
+.filter-pill.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* ============================================================
+   FEATURED STORY
+   ============================================================ */
+.news-feature-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 40px 0;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+}
+
+.news-feature {
+    position: relative;
+    display: block;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    min-height: 380px;
+    transition: border-color 0.15s;
+}
+
+.news-feature:hover {
+    border-color: var(--text-muted);
+}
+
+.news-feature-img {
+    position: absolute;
+    inset: 0;
+}
+
+.news-feature-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 28px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.88) 55%);
+}
+
+.news-feature-body h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin: 10px 0 12px;
+    max-width: 90%;
+}
+
+.news-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.news-side-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 8px;
+    border-radius: 8px;
+    transition: background 0.12s;
+}
+
+.news-side-item:hover {
+    background: var(--surface2);
+}
+
+.news-side-thumb {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.news-side-item p {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 6px;
+}
+
+/* ============================================================
+   TAG + TIMESTAMP  (shared by feature + grid cards)
+   ============================================================ */
+.news-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.news-time {
+    font-size: 11px;
+    color: var(--text-sub);
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.news-grid-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+}
+
+.news-section-label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.15s, transform 0.15s;
+}
+
+.news-card:hover {
+    border-color: var(--text-muted);
+    transform: translateY(-2px);
+}
+
+.news-card-img {
+    height: 150px;
+}
+
+.news-card-body {
+    padding: 16px 18px 18px;
+}
+
+.news-card-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 8px 0 10px;
+}
+
+/* Hide cards filtered out by news.js */
+.news-card.is-hidden,
+.news-side-item.is-hidden {
+    display: none;
+}
+
+/* ============================================================
+   PLACEHOLDER THUMBNAILS
+   Colour-coded by team so filler cards still feel on-brand.
+   Swap data-team for a real background-image when you have one:
+     .news-card-img { background: url('../Images/thumb.jpg') center/cover; }
+   ============================================================ */
+[data-team="ferrari"] {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--ferrari) 35%, var(--bg)), var(--bg));
+}
+
+[data-team="mclaren"] {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--mclaren) 35%, var(--bg)), var(--bg));
+}
+
+[data-team="mercedes"] {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--mercedes) 35%, var(--bg)), var(--bg));
+}
+
+[data-team="redbull"] {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--redbull) 35%, var(--bg)), var(--bg));
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .news-feature-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-title {
+        font-size: 32px;
+    }
+}

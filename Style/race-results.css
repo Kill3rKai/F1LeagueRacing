@@ -1,0 +1,252 @@
+/* ============================================================
+   VSM F1 League — race-results.css
+   Styles for individual race result pages under
+   results/season1/*.html (full driver classification).
+   Relies on tokens + resets already defined in main.css.
+   ============================================================ */
+
+/* ============================================================
+   TOP BAR — round pills + circuit flag
+   ============================================================ */
+.race-topbar-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 32px 40px 0;
+}
+
+.race-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.race-pills {
+    display: flex;
+    gap: 12px;
+}
+
+.race-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    padding: 10px 18px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+}
+
+.race-pill span {
+    font-size: 10px;
+    color: var(--text-sub);
+}
+
+.race-flag {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* ============================================================
+   TITLE BLOCK
+   ============================================================ */
+.race-title-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.race-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    max-width: 900px;
+}
+
+.race-title em {
+    color: var(--accent);
+    font-style: normal;
+}
+
+.race-meta {
+    margin-top: 14px;
+}
+
+.race-date {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.race-circuit {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+.race-badge {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   CLASSIFICATION TABLE
+   ============================================================ */
+.race-table-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 28px 40px 80px;
+}
+
+.race-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.race-table thead tr {
+    background: var(--surface2);
+}
+
+.race-table tbody tr {
+    height: 50px;
+}
+
+/* Column widths — keeps Driver + Team close, no giant middle gap */
+.race-table th:nth-child(1),
+.race-table .td-pos {
+    width: 70px;
+}
+
+.race-table th:nth-child(2),
+.race-table .td-name {
+    width: 45%;
+}
+
+.race-table th:nth-child(3),
+.race-table .td-team {
+    width: 180px;
+}
+
+.race-table th:nth-child(4),
+.race-table .td-pts {
+    width: 70px;
+}
+
+/* Podium row tint on the position number */
+.race-table tr[data-pos="1"] .td-pos {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Back-to-results link */
+.race-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-top: 20px;
+}
+
+.race-back::before {
+    content: '←';
+}
+
+.race-back:hover {
+    color: var(--text);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .race-title-wrap {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+    .race-title {
+        font-size: 24px;
+    }
+}
+
+/* ============================================================
+   RACE PILL DROPDOWN
+   ============================================================ */
+.race-pill--dropdown {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Invisible bridge so the mouse can cross the gap without closing */
+.race-pill--dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.race-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  z-index: 50;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.race-pill--dropdown:hover .race-dropdown,
+.race-pill--dropdown:focus-within .race-dropdown {
+  display: block;
+}
+
+.race-dropdown a {
+  display: block;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sub);
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.race-dropdown a:hover {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+.race-dropdown a.current {
+  color: var(--accent);
+  background: rgba(225, 6, 0, 0.08);
+}
