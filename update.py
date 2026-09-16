@@ -78,7 +78,7 @@ SEASONS = {
         "player_map": {
             "Scuderia Ferrari HP":  ["Kai", "Deshy"],
             "McLaren":              ["Tom"],
-            "Oracle Red Bull Racing": ["Téo"],
+            "Oracle Red Bull Racing": ["Orion"],
             "Mercedes-AMG F1 Team": ["Rehan"],
         },
         # Named player aliases as they appear in the CSV, if different
@@ -93,7 +93,7 @@ SEASONS = {
             ("Kai",         "Scuderia Ferrari HP",        True),
             ("Deshy",       "Scuderia Ferrari HP",        True),
             ("Tom",         "McLaren",                    True),
-            ("Téo",         "Oracle Red Bull Racing",     True),
+            ("Orion",         "Oracle Red Bull Racing",     True),
             ("Rehan",       "Mercedes-AMG F1 Team",       True),
             ("Antonelli",   "Mercedes-AMG F1 Team",       False),
             ("Verstappen",  "Oracle Red Bull Racing",     False),

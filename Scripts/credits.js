@@ -17,7 +17,7 @@ const CREDITS = [
       { name: 'Kai',   role: 'Ferrari — Driver',   link: 'drivers/kai.html' },
       { name: 'Deshy', role: 'Ferrari — Driver',   link: 'drivers/deshy.html' },
       { name: 'Tom',   role: 'McLaren — Driver',   link: 'drivers/tom.html' },
-      { name: 'Téo',   role: 'Red Bull — Driver',  link: 'drivers/teo.html' },
+      { name: 'Orion',   role: 'Red Bull — Driver',  link: 'drivers/teo.html' },
       { name: 'Rehan', role: 'Mercedes — Driver',  link: 'drivers/rehan.html' },
     ],
   },

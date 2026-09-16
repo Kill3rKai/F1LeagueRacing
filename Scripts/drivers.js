@@ -28,7 +28,7 @@ const DRIVERS = [
   { name: 'Kill3rKai',   team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/KaiDriver.jpeg',   link: 'drivers/kai.html' },
   { name: 'Deshy', team: 'Ferrari',  teamSlug: 'ferrari',  photo: 'Images/deshyPFP.jpg', link: 'drivers/deshy.html' },
   { name: 'Polaris',   team: 'McLaren',  teamSlug: 'mclaren',  photo: 'Images/DriverTom.jpg',   link: 'drivers/tom.html' },
-  { name: 'Ashigaru',   team: 'Red Bull', teamSlug: 'redbull',  photo: 'Images/TeoDriver.png',   link: 'drivers/teo.html' },
+  { name: 'Orion',   team: 'Red Bull', teamSlug: 'redbull',  photo: 'Images/TeoDriver.png',   link: 'drivers/teo.html' },
   { name: 'XDLegionair', team: 'Mercedes', teamSlug: 'mercedes', photo: 'Images/rehan1.jpg', link: 'drivers/rehan.html' },
 ];
 

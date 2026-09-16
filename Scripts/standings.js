@@ -19,7 +19,7 @@
    ============================================================ */
 
 function slugifyName(name) {
-  // "Téo" -> "teo" — strips accents so filenames stay plain ASCII
+  // "Orion" -> "teo" — strips accents so filenames stay plain ASCII
   return name
     .normalize('NFKD')
     .replace(/[\u0300-\u036f]/g, '')

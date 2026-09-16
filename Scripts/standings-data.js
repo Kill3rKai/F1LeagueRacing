@@ -25,7 +25,7 @@ const STANDINGS_S1 = {
       "gap": "-7"
     },
     {
-      "name": "Téo",
+      "name": "Orion",
       "team": "Red Bull",
       "teamSlug": "redbull",
       "isPlayer": true,
