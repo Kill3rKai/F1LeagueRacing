@@ -27,16 +27,21 @@ const PODIUMS = {
   2: [
     { pos: 1, code: 'NOR', name: 'Norris',   teamSlug: 'mclaren' },
     { pos: 2, code: 'VER', name: 'Verstappen', teamSlug: 'redbull' },
-    { pos: 3, code: 'ASH', name: 'Orion',   teamSlug: 'redbull' },
+    { pos: 3, code: 'ORI', name: 'Orion',   teamSlug: 'redbull' },
   ],
   3: [
     { pos: 1, code: 'REH', name: 'Rehan',   teamSlug: 'mercedes' },
-    { pos: 2, code: 'ASH', name: 'Orion', teamSlug: 'redbull' },
+    { pos: 2, code: 'ORI', name: 'Orion', teamSlug: 'redbull' },
     { pos: 3, code: 'KAI', name: 'Kill3rKai',   teamSlug: 'ferrari' },
   ],
   4: [
     { pos: 1, code: 'REH', name: 'Rehan', teamSlug: 'mercedes' },
     { pos: 2, code: 'KAI', name: 'Kill3rKai',   teamSlug: 'ferrari' },
+    { pos: 3, code: 'DES', name: 'Deshy',   teamSlug: 'ferrari' },
+  ],
+  5: [
+    { pos: 1, code: 'REH', name: 'Rehan', teamSlug: 'mercedes' },
+    { pos: 2, code: 'ORI', name: 'Orion',   teamSlug: 'redbull' },
     { pos: 3, code: 'DES', name: 'Deshy',   teamSlug: 'ferrari' },
   ],
 };
