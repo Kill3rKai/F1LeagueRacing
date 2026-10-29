@@ -1,0 +1,236 @@
+/* 404 page — loads after styles.css, so it reuses its colour variables,
+   background layers (grid, orbs, noise, corners) and custom cursor. */
+
+.err-wrap {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 24px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ── the one big moment: glitching 404 ── */
+.err-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(6rem, 26vw, 11rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 60%, var(--accent3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(0, 200, 255, 0.45));
+    animation: errGlitch 6s steps(1) infinite;
+}
+
+@keyframes errGlitch {
+
+    0%,
+    92%,
+    100% {
+        transform: none;
+        filter: drop-shadow(0 0 30px rgba(0, 200, 255, 0.45));
+    }
+
+    93% {
+        transform: translateX(-4px);
+        filter: drop-shadow(4px 0 0 rgba(255, 45, 120, 0.7)) drop-shadow(-4px 0 0 rgba(0, 200, 255, 0.7));
+    }
+
+    95% {
+        transform: translateX(3px);
+        filter: drop-shadow(-3px 0 0 rgba(255, 45, 120, 0.7)) drop-shadow(3px 0 0 rgba(0, 200, 255, 0.7));
+    }
+
+    97% {
+        transform: translateX(-1px);
+    }
+}
+
+.err-sub {
+    margin: 8px 0 28px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    letter-spacing: 0.3em;
+    color: var(--accent2);
+    text-transform: uppercase;
+}
+
+/* ── terminal window ── */
+.term {
+    width: 100%;
+    text-align: left;
+    background: rgba(2, 8, 18, 0.85);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.06);
+    overflow: hidden;
+}
+
+.term-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border);
+}
+
+.term-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+    opacity: 0.45;
+}
+
+.term-dot:nth-child(1) {
+    background: var(--accent2);
+}
+
+.term-dot:nth-child(2) {
+    background: var(--gold);
+}
+
+.term-dot:nth-child(3) {
+    background: var(--accent4);
+}
+
+.term-title {
+    margin-left: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+.term-body {
+    padding: 18px 20px 20px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+    min-height: 190px;
+}
+
+.term-body p {
+    word-break: break-all;
+}
+
+.term-body .prompt {
+    color: var(--accent);
+    margin-right: 6px;
+}
+
+.term-body .err {
+    color: var(--accent2);
+}
+
+.term-body .dim {
+    color: var(--muted);
+    word-break: normal;
+}
+
+/* lines appear one after another, no JS needed */
+.tl {
+    opacity: 0;
+    animation: lineIn 0.01s linear forwards;
+    animation-delay: var(--d, 0s);
+}
+
+@keyframes lineIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.term-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1em;
+    background: var(--accent);
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+}
+
+/* ── actions ── */
+.err-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 26px;
+}
+
+.err-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.err-btn i {
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.err-btn:hover,
+.err-btn:focus-visible {
+    background: rgba(0, 200, 255, 0.08);
+    border-color: rgba(0, 200, 255, 0.45);
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.15);
+    outline: none;
+}
+
+.err-footer {
+    margin-top: 44px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+.err-footer span {
+    color: var(--accent);
+}
+
+@media (max-width: 480px) {
+    .term-body {
+        font-size: 0.8rem;
+        padding: 14px 14px 16px;
+    }
+
+    .err-btn {
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .err-code {
+        animation: none;
+    }
+
+    .tl {
+        opacity: 1;
+        animation: none;
+    }
+}

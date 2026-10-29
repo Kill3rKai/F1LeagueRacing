@@ -2,291 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miami— Race Result — VSM F1 League</title>
-  <link rel="icon" href="../../Images/VSM.png" sizes="32x32" />
-  <link rel="stylesheet" href="../../Style/main.css">
-  <link rel="stylesheet" href="../../Style/raceResults.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 // Kill3rKai</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#020812">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Rajdhani:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <!-- absolute paths so this works from any URL depth -->
+  <link rel="stylesheet" href="Styles/styles.css">
+  <link rel="stylesheet" href="Styles/404.css">
+
+  <link rel="icon" href="Images/clearimage.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="Images/iconfile.png">
+
+  <meta property="og:title" content="Kill3rkai">
+  <meta property="og:description" content="Official Website For Kill3rKai And LillyAI.">
+  <meta property="og:image" content="https://kill3rkai.ai/Images/iconfile.png">
+  <meta property="og:url" content="https://kill3rkai.ai">
+  <meta property="og:type" content="website">
+
+  <script src="Scripts/main.js" defer></script>
+  <script src="Scripts/live.js" defer></script>
 </head>
 
 <body>
 
-  <!-- ============================================================
-     NAV
-     ============================================================ -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="../../index.html" class="nav-logo">VSM <em>F1</em> League</a>
-      <ul class="nav-links">
-        <li><a href="../../index.html">Home</a></li>
-        <li class="nav-item nav-item--season">
-          <a href="../../season/1.html">Season</a>
-          <div class="nav-dropdown">
-            <div class="dropdown-label">All Seasons</div>
-            <div class="dropdown-grid">
-              <a href="../../season/1.html" class="current">Season 1</a>
-            </div>
-          </div>
-        </li>
-        <li><a href="../../drivers.html">Drivers</a></li>
-        <li class="active"><a href="../../results.html">Results</a></li>
-        <li><a href="../../news.html">News</a></li>
-        <li><a href="../../credits.html">Credits</a></li>
-        <li><a href="https://discord.gg/tXmGZc8z87" target="_blank" rel="noopener">Discord</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div id="cursor"></div>
+  <div id="cursorRing"></div>
 
-  <div class="page">
+  <div class="noise"></div>
+  <div class="grid-bg"></div>
+  <div class="glow-orb o1"></div>
+  <div class="glow-orb o2"></div>
+  <div class="glow-orb o3"></div>
+  <div class="corner-deco tl"></div>
+  <div class="corner-deco tr"></div>
+  <div class="corner-deco bl"></div>
+  <div class="corner-deco br"></div>
 
-    <!-- ============================================================
-       ROUND PILLS
-       ============================================================ -->
-    <div class="race-topbar-wrap">
-      <div class="race-topbar">
-        <div class="race-pills">
-          <div class="race-pill race-pill--dropdown">
-            Miami <span>▾</span>
-            <div class="race-dropdown">
-              <a href="australia.html">🇦🇺 Australia</a>
-              <a href="china.html">🇨🇳 China</a>
-              <a href="japan.html">🇯🇵 Japan</a>
-              <a href="miami.html" class="current">🇺🇸 Miami</a>
-            </div>
-          </div>
-          <div class="race-pill">Race Result</div>
-        </div>
-        <div class="race-flag">🇺🇸</div>
+  <main class="err-wrap">
+
+    <h1 class="err-code" aria-label="Error 404">404</h1>
+    <p class="err-sub">Page not found</p>
+
+    <section class="term" aria-label="Terminal output">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">guest@kill3rkai.ai</span>
       </div>
-    </div>
-
-    <!-- ============================================================
-       TITLE
-       ============================================================ -->
-    <div class="race-title-wrap">
-      <div>
-        <h1 class="race-title">VSM <em>F1</em> League — Miami Grand Prix — Race Result</h1>
-        <div class="race-meta">
-          <span class="race-date">27 OCT 2026</span>
-          <span class="race-circuit">Miami Grand Prix</span>
-        </div>
+      <div class="term-body">
+        <p class="tl" style="--d:0.3s"><span class="prompt">$</span> cd <span class="req-path"></span></p>
+        <p class="tl err" style="--d:1s">bash: cd: <span class="req-path"></span>: No such file or directory</p>
+        <p class="tl" style="--d:1.7s"><span class="prompt">$</span> ls /</p>
+        <p class="tl dim" style="--d:2.3s">main.html &nbsp; about.html &nbsp; schedule.html &nbsp; faq.html &nbsp;
+          goals.html &nbsp; specs.html</p>
+        <p class="tl" style="--d:3s"><span class="prompt">$</span> <span class="term-cursor"></span></p>
       </div>
-      <span class="race-badge">Round 4</span>
+    </section>
+
+    <div class="err-actions">
+      <a class="err-btn" href="/"><i class="fa-solid fa-house"></i> Go home</a>
+      <button class="err-btn" id="back-btn" type="button"><i class="fa-solid fa-arrow-left"></i> Go back</button>
     </div>
 
-    <!-- ============================================================
-       CLASSIFICATION
-       Edit driver, team (+ its tc-/data-team key), time and
-       points per row. Team keys match main.css: ferrari, mclaren,
-       mercedes, redbull, williams, audi, haas, astonmartin,
-       cadillac, racingbulls, alpine.
-       ============================================================ -->
-    <div class="race-table-wrap">
-      <div class="table-wrap">
-        <table class="s-table race-table">
-          <thead>
-            <tr>
-              <th>Pos</th>
-              <th>Driver</th>
-              <th>Team</th>
-              <th class="r">Time / Retired</th>
-              <th class="r">Pts</th>
-            </tr>
-          </thead>
-          <tbody>
+    <p class="err-footer"><span>//</span> KILL3RKAI &nbsp;·&nbsp; <span>2026</span></p>
 
-            <tr data-team="mercedes" data-pos="1">
-              <td class="td-pos">1</td>
-              <td class="td-name">XDLegionair</td>
-              <td class="td-team tc-mercedes">Mercedes</td>
-              <td class="td-time leader">45:08.341</td>
-              <td class="td-pts r">25</td>
-            </tr>
+  </main>
 
-            <tr data-team="redbull" data-pos="2">
-              <td class="td-pos">2</td>
-              <td class="td-name">Orion</td>
-              <td class="td-team tc-redbull">Red Bull</td>
-              <td class="td-time">+3.271</td>
-              <td class="td-pts r">18</td>
-            </tr>
+  <script>
+    document.querySelectorAll('.req-path').forEach(function (el) {
+      el.textContent = location.pathname.slice(0, 80);
+    });
+    document.getElementById('back-btn').addEventListener('click', function () {
+      if (history.length > 1) history.back(); else location.href = '/';
+    });
+  </script>
 
-            <tr data-team="ferrari" data-pos="3">
-              <td class="td-pos">3</td>
-              <td class="td-name">Deshy</td>
-              <td class="td-team tc-ferrari">Ferrari</td>
-              <td class="td-time">+31.623</td>
-              <td class="td-pts r">15</td>
-            </tr>
-
-            <tr data-team="mercedes" data-pos="4">
-              <td class="td-pos">4</td>
-              <td class="td-name">Antonelli</td>
-              <td class="td-team tc-mercedes">Mercedes</td>
-              <td class="td-time">+31.787</td>
-              <td class="td-pts r">12</td>
-            </tr>
-
-            <tr data-team="mclaren" data-pos="5">
-              <td class="td-pos">5</td>
-              <td class="td-name">Norris</td>
-              <td class="td-team tc-mclaren">McLaren</td>
-              <td class="td-time">+33.054</td>
-              <td class="td-pts r">10</td>
-            </tr>
-
-            <tr data-team="redbull" data-pos="6">
-              <td class="td-pos">6</td>
-              <td class="td-name">Verstappen</td>
-              <td class="td-team tc-redbull">Red Bull</td>
-              <td class="td-time">+33.997</td>
-              <td class="td-pts r">8</td>
-            </tr>
-
-            <tr data-team="mclaren" data-pos="7">
-              <td class="td-pos">7</td>
-              <td class="td-name">Polaris</td>
-              <td class="td-team tc-mclaren">McLaren</td>
-              <td class="td-time">+40.627</td>
-              <td class="td-pts r">6</td>
-            </tr>
-
-            <tr data-team="alpine" data-pos="8">
-              <td class="td-pos">8</td>
-              <td class="td-name">Gasly</td>
-              <td class="td-team tc-alpine">Alpine</td>
-              <td class="td-time">+41.491</td>
-              <td class="td-pts r">4</td>
-            </tr>
-
-            <tr data-team="williams" data-pos="9">
-              <td class="td-pos">9</td>
-              <td class="td-name">Albon</td>
-              <td class="td-team tc-williams">Williams</td>
-              <td class="td-time">+54.361</td>
-              <td class="td-pts r">2</td>
-            </tr>
-
-            <tr data-team="racingbulls" data-pos="10">
-              <td class="td-pos">10</td>
-              <td class="td-name">Lawson</td>
-              <td class="td-team tc-racingbulls">Racing Bulls</td>
-              <td class="td-time">+56.647</td>
-              <td class="td-pts r">1</td>
-            </tr>
-
-            <tr data-team="astonmartin" data-pos="11">
-              <td class="td-pos">11</td>
-              <td class="td-name">Alonso</td>
-              <td class="td-team tc-astonmartin">Aston Martin</td>
-              <td class="td-time">+1:02.907</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="audi" data-pos="12">
-              <td class="td-pos">12</td>
-              <td class="td-name">Bortoletto</td>
-              <td class="td-team tc-audi">Audi</td>
-              <td class="td-time">+1:03.162</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="audi" data-pos="13">
-              <td class="td-pos">13</td>
-              <td class="td-name">Hulkenburg</td>
-              <td class="td-team tc-audi">Audi</td>
-              <td class="td-time">+1:04.039</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="alpine" data-pos="14">
-              <td class="td-pos">14</td>
-              <td class="td-name">Colapinto</td>
-              <td class="td-team tc-alpine">Alpine</td>
-              <td class="td-time">+1:07.536</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="racingbulls" data-pos="15">
-              <td class="td-pos">15</td>
-              <td class="td-name">Lindblad</td>
-              <td class="td-team tc-racingbulls">Racing Bulls</td>
-              <td class="td-time">+1:07.998</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="astonmartin" data-pos="16">
-              <td class="td-pos">16</td>
-              <td class="td-name">Stroll</td>
-              <td class="td-team tc-astonmartin">Aston Martin</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="williams" data-pos="17">
-              <td class="td-pos">17</td>
-              <td class="td-name">Sainz</td>
-              <td class="td-team tc-williams">Williams</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="cadillac" data-pos="18">
-              <td class="td-pos">18</td>
-              <td class="td-name">Bottas</td>
-              <td class="td-team tc-cadillac">Cadillac</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="haas" data-pos="19">
-              <td class="td-pos">19</td>
-              <td class="td-name">Occon</td>
-              <td class="td-team tc-haas">Haas</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="haas" data-pos="20">
-              <td class="td-pos">20</td>
-              <td class="td-name">Bearman</td>
-              <td class="td-team tc-haas">Haas</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="cadillac" data-pos="21">
-              <td class="td-pos">21</td>
-              <td class="td-name">Perez</td>
-              <td class="td-team tc-cadillac">Cadillac</td>
-              <td class="td-time">+ 1 Lap</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-            <tr data-team="ferrari" data-pos="22">
-              <td class="td-pos">22</td>
-              <td class="td-name">Kill3rKai</td>
-              <td class="td-team tc-ferrari">Ferrari</td>
-              <td class="td-time">DNF</td>
-              <td class="td-pts r">0</td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-
-      <a href="../../results.html" class="race-back">Back to Results</a>
-    </div>
-
-  </div>
-
-  <footer class="footer">
-    <span class="footer-logo">VSM <em>F1</em> League</span>
-    <span class="footer-copy">&copy; 2026 VSM F1 League</span>
-  </footer>
-
-  <script src="../../Scripts/main.js"></script>
 </body>
 
 </html>
