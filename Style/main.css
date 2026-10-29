@@ -1057,3 +1057,109 @@ button {
   font-size: 11px;
   color: var(--text-muted);
 }
+
+/* ============================================================
+   MOBILE FIXES  (add at the very bottom of main.css)
+   ============================================================ */
+
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+
+@media (max-width: 700px) {
+
+  /* Nav is taller on mobile: logo row + scrollable links row */
+  :root { --nav-h: 88px; }
+
+  .nav { padding: 0 14px; }
+
+  .nav-inner {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .nav-logo { font-size: 15px; }
+
+  .nav-links {
+    width: 100%;
+    gap: 22px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links > li { flex-shrink: 0; }
+
+  /* Hover dropdown doesn't work on touch and is wider than a phone */
+  .nav-dropdown { display: none; }
+
+  /* Hero */
+  .hero {
+    height: auto;
+    min-height: calc(100vh - var(--nav-h));
+    min-height: calc(100svh - var(--nav-h));
+    padding: 40px 0;
+  }
+  .hero-sub { font-size: 14px; margin-bottom: 28px; }
+  .hero-actions { flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .btn-primary { padding: 13px 26px; }
+
+  /* Season header */
+  .season-header-wrap { padding: 18px 14px 0; }
+  .season-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 22px 18px;
+  }
+  .season-title { font-size: 38px; }
+  .season-badges { flex-wrap: wrap; }
+  .switcher-select { width: 100%; }
+
+  /* Standings area */
+  .standings-wrap { padding: 0 14px 60px; }
+  .standings-topbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 18px 0 14px;
+  }
+  .page-tabs,
+  .toggle-group { gap: 8px; }
+  .page-tab,
+  .toggle-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 12px;
+  }
+
+  /* Tables: tighter so they fit; they still scroll sideways if needed */
+  .s-table th { padding: 10px 8px; letter-spacing: 0.1em; }
+  .s-table td { padding: 0 8px; }
+  .s-table tbody tr { height: 46px; }
+  .td-pos  { width: 34px; font-size: 11px; }
+  .td-name { font-size: 13px; }
+  .td-team { width: auto; font-size: 12px; }
+  .td-pts  { width: auto; font-size: 14px; }
+  .td-gap  { width: auto; font-size: 11px; }
+
+  /* Calendar podium strip */
+  .cal-row { padding-left: 14px; padding-right: 14px; }
+  .cal-podium,
+  .cal-podium.open { padding-left: 14px; padding-right: 14px; }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+    gap: 10px;
+    padding: 24px 18px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-links { gap: 16px; }
+  .season-title { font-size: 32px; }
+  .td-team { font-size: 11px; }
+}
